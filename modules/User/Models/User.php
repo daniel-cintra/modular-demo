@@ -18,11 +18,6 @@ class User extends Authenticatable
 {
     use HasFactory, HasRoles, Notifiable, Searchable, SoftDeletes;
 
-    protected static function newFactory()
-    {
-        return UserFactory::new();
-    }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -68,5 +63,10 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->morphTo();
+    }
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
     }
 }

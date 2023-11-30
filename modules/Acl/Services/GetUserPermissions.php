@@ -11,15 +11,15 @@ class GetUserPermissions
     {
         $user = User::with(['permissions' => function ($query) {
             $query->get(['id', 'name']);
-        }])->findOrFail($userId);
+        },
+        ])->findOrFail($userId);
 
         //if has direct permissions use it
         if ($user->permissions->count()) {
             return $this->mapPermissions($user->permissions);
-        //get the permissions via roles
-        } else {
-            return $this->mapPermissions($user->getAllPermissions());
+            //get the permissions via roles
         }
+        return $this->mapPermissions($user->getAllPermissions());
     }
 
     private function mapPermissions(Collection $permissions): array

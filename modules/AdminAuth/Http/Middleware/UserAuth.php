@@ -12,6 +12,7 @@ class UserAuth
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string|null  $guard
+     *
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)

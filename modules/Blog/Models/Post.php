@@ -20,11 +20,6 @@ class Post extends BaseModel
 
     protected $appends = ['image_url'];
 
-    protected static function newFactory(): Factory
-    {
-        return BlogPostFactory::new();
-    }
-
     public function sluggable(): array
     {
         return [
@@ -50,5 +45,10 @@ class Post extends BaseModel
         }
 
         return null;
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return BlogPostFactory::new();
     }
 }
