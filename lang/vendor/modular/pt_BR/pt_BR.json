@@ -1,0 +1,132 @@
+{
+    "__Modular/CommonMessages__": "Used throughout the application",
+    "Whoops! Something went wrong...": "Ops! Algo deu errado...",
+    "Confirmation": "Confirmação",
+    "Are you sure you want to proceed?": "Tem certeza que deseja prosseguir?",
+    "Yes": "Sim",
+    "No": "Não",
+    "Save": "Salvar",
+    "Clear Search": "Limpar Busca",
+    "Message": "Mensagem",
+    "Create": "Criar",
+    "Edit": "Editar",
+
+    "__Modular/AdminAuth/LoginForm__": "Login Page",
+    "Session expired, please login again.": "Sessão expirada, por favor faça login novamente.",
+    "Sign in to your account": "Acesse sua conta",
+    "Your Email": "Seu e-mail",
+    "Password": "Senha",
+    "Remember me": "Lembrar-me",
+    "Forgot your password?": "Esqueceu sua senha?",
+    "Sign in": "Entrar",
+
+    "__Modular/AdminAuth/ForgotPage__": "Forgot Password Page",
+    "Enter your email to reset your password.": "Digite seu e-mail para redefinir sua senha.",
+    "Send": "Enviar",
+
+    "__Modular/AdminAuth/ResetPasswordPage__": "Reset Password Page",
+    "Password Reset": "Redefinição de Senha",
+    "Fill the form below to reset your password": "Preencha o formulário abaixo para redefinir sua senha",
+    "Password Confirmation": "Confirmação de Senha",
+
+    "__js/Configs/menu__": "Side Menu Translations",
+    "Access Control List": "Controle de Acesso",
+    "Dashboard": "Dashboard",
+    "Users": "Usuários",
+    "Permissions": "Permissões",
+    "Roles": "Perfis",
+
+    "__Modular/User__": "User Module",
+    "Create User": "Criar Usuário",
+    "Search": "Busca",
+    "Name": "Nome",
+    "User Roles": "Perfis",
+    "User Permissions": "Permissões",
+    "Edit User": "Editar Usuário",
+    "Delete User": "Deletar Usuário",
+    "User": "Usuário",
+    "No users found": "Nenhum usuário encontrado",
+    "User created": "Usuário criado",
+    "User updated": "Usuário atualizado",
+    "User deleted": "Usuário deletado",
+
+    "User Roles for": "Perfis do Usuário",
+    "User Permissions for": "Permissões do Usuário",
+
+    "Permission": "Permissão",
+    "Create Permission": "Criar Permissão",
+    "Edit Permission": "Editar Permissão",
+    "Delete Permission": "Deletar Permissão",
+    "No permissions found": "Nenhuma permissão encontrada",
+    "Permission created": "Permissão criada",
+    "Permission updated": "Permissão atualizada",
+    "Permission deleted": "Permissão deletada",
+
+    "Create Role": "Criar Perfil",
+    "Role Permissions": "Permissões do Perfil",
+    "Edit Role": "Editar Perfil",
+    "Delete Role": "Deletar Perfil",
+    "Role Permissions for": "Permissões do Perfil",
+    "Role": "Perfil",
+    "No roles found": "Nenhum perfil encontrado",
+    "Role created": "Perfil criado",
+    "Role updated": "Perfil atualizado",
+    "Role deleted": "Perfil deletado",
+
+    "Role permissions updated": "Permissões do perfil atualizadas",
+    "User roles updated": "Perfis do usuário atualizados",
+    "User permissions updated": "Permissões do usuário atualizadas",
+
+    "__resources/js/Components/Form/AppTipTapEditor__": "Tip Tap Editor",
+    "Bold": "Negrito",
+    "Italic": "Itálico",
+    "Underline": "Sublinhado",
+    "Strikethrough": "Tachado",
+
+    "Heading 1": "Heading 1",
+    "Heading 2": "Heading 2",
+    "Heading 3": "Heading 3",
+    "Heading 4": "Heading 4",
+
+    "Paragraph": "Parágrafo",
+    "List": "Lista",
+    "Ordered List": "Lista Ordenada",
+
+    "Add Link": "Adicionar Link",
+    "Remove Link": "Remover Link",
+
+    "Line Break": "Quebra de Linha",
+    "Horizontal Rule": "Linha Horizontal",
+    "Clear Format": "Limpar Formatação",
+
+    "Add Image": "Adicionar Imagem",
+    "Add Video": "Adicionar Vídeo",
+
+    "Table": "Tabela",
+    "Undo": "Desfazer",
+    "Redo": "Refazer",
+    "Code View": "Visualizar Código",
+
+    "Insert Table": "Inserir Tabela",
+
+    "Add Column Before": "Adicionar Coluna Antes",
+    "Add Column After": "Adicionar Coluna Depois",
+    "Delete Column": "Deletar Coluna",
+
+    "Add Row Before": "Adicionar Linha Antes",
+    "Add Row After": "Adicionar Linha Depois",
+    "Delete Row": "Deletar Linha",
+
+    "Merge Cells": "Mesclar Células",
+    "Split Cell": "Dividir Célula",
+
+    "Alternate Column Header": "Alternar Cabeçalho da Coluna",
+    "Alternate Row Header": "Alternar Cabeçalho da Linha",
+    "Alternate Cell Header": "Alternar Cabeçalho da Célula",
+
+    "Merge or Split": "Mesclar ou Dividir",
+    "Go to Next Cell": "Ir para Próxima Célula",
+    "Go to Previous Cell": "Ir para Célula Anterior",
+    "Fix Table": "Fixar Tabela",
+    "Delete Table": "Deletar Tabela"
+}

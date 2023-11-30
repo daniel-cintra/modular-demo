@@ -1,0 +1,123 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+    :root {
+        --color-primary-1: 253 253 254; /* #fdfdfe */
+        --color-primary-2: 248 250 255; /* #f8faff */
+        --color-primary-3: 240 244 255; /* #f0f4ff */
+        --color-primary-4: 230 237 254; /* #e6edfe */
+        --color-primary-5: 217 226 252; /* #d9e2fc */
+        --color-primary-6: 198 212 249; /* #c6d4f9 */
+        --color-primary-7: 174 192 245; /* #aec0f5 */
+        --color-primary-8: 141 164 239; /* #8da4ef */
+        --color-primary-9: 62 99 221; /* #3e63dd */
+        --color-primary-10: 58 92 204; /* #3a5ccc */
+        --color-primary-11: 52 81 178; /* #3451b2 */
+        --color-primary-12: 31 45 92; /* #1f2d5c */
+
+        /* 1 - App background, 2 - Subtle background */
+        --color-neutral-1: 252 252 253; /* #fcfcfd */
+        --color-neutral-2: 249 249 251; /* #f9f9fb */
+
+        /* 3 - UI element background, 4 - Hovered UI element background, 5 - Active / Selected UI element background */
+        --color-neutral-3: 242 242 245; /* #f2f2f5 */
+        --color-neutral-4: 235 235 239; /* #ebebef */
+        --color-neutral-5: 228 228 233; /* #e4e4e9 */
+
+        /* 6 - Subtle borders and separators, 7 - UI element border and focus rings, 8 - Hovered UI element border */
+        --color-neutral-6: 221 221 227; /* #dddde3 */
+        --color-neutral-7: 211 212 219; /* #d3d4db */
+        --color-neutral-8: 185 187 198; /* #b9bbc6 */
+
+        /* 9 - Solid backgrounds, 10 - Hovered solid backgrounds */
+        --color-neutral-9: 139 141 152; /* #8b8d98 */
+        --color-neutral-10: 126 128 138; /* #7e808a */
+
+        /* 11 - Low-contrast text, 12 - High-contrast text */
+        --color-neutral-11: 96 100 108; /* #60646c */
+        --color-neutral-12: 28 32 36; /* #1c2024 */
+
+        /* Semantic Colors */
+        --color-info: 11 104 203; /* #0b68cb 11*/
+        --color-info-light: 237 246 255; /* #edf6ff 3*/
+        --color-info-dark: 17 50 100; /* #113264 12*/
+
+        --color-success: 24 121 78; /* #18794e */
+        --color-success-light: 233 249 238; /* #e9f9ee */
+        --color-success-dark: 25 59 45; /* #193b2d */
+
+        --color-warning: 119 95 40; /* #775f28 */
+        --color-warning-light: 255 248 198; /* #fff8c6 */
+        --color-warning-dark: 71 59 31; /* #473b1f */
+
+        --color-error: 198 42 47; /* #c62a2f */
+        --color-error-light: 255 239 239; /* #ffefef */
+        --color-error-dark: 100 23 35; /* #641723 */
+    }
+
+    .dark-theme {
+        --color-primary-1: 253 253 254; /* #fdfdfe */
+        --color-primary-2: 248 250 255; /* #f8faff */
+        --color-primary-3: 240 244 255; /* #f0f4ff */
+        --color-primary-4: 230 237 254; /* #e6edfe */
+        --color-primary-5: 217 226 252; /* #d9e2fc */
+        --color-primary-6: 198 212 249; /* #c6d4f9 */
+        --color-primary-7: 174 192 245; /* #aec0f5 */
+        --color-primary-8: 141 164 239; /* #8da4ef */
+        --color-primary-9: 62 99 221; /* #3e63dd */
+        --color-primary-10: 58 92 204; /* #3a5ccc */
+        --color-primary-11: 52 81 178; /* #3451b2 */
+        --color-primary-12: 31 45 92; /* #1f2d5c */
+
+        /* 1 - App background, 2 - Subtle background */
+        --color-neutral-1: 17 17 19; /* #111113 */
+        --color-neutral-2: 24 25 27; /* #18191b */
+
+        /* 3 - UI element background, 4 - Hovered UI element background, 5 - Active / Selected UI element background */
+        --color-neutral-3: 33 34 37; /* #212225 */
+        --color-neutral-4: 39 42 45; /* #272a2d */
+        --color-neutral-5: 46 49 53; /* #2e3135 */
+
+        /* 6 - Subtle borders and separators, 7 - UI element border and focus rings, 8 - Hovered UI element border */
+        --color-neutral-6: 54 58 63; /* #363a3f */
+        --color-neutral-7: 67 72 78; /* #43484e */
+        --color-neutral-8: 90 97 105; /* #5a6169 */
+
+        /* 9 - Solid backgrounds, 10 - Hovered solid backgrounds */
+        --color-neutral-9: 105 110 119; /* #696e77 */
+        --color-neutral-10: 119 123 132; /* #777b84 */
+
+        /* 11 - Low-contrast text, 12 - High-contrast text */
+        --color-neutral-11: 176 180 186; /* #b0b4ba */
+        --color-neutral-12: 237 238 240; /* #edeef0 */
+
+        /* Semantic Colors */
+        --color-info: 11 104 203; /* #0b68cb 11*/
+        --color-info-light: 237 246 255; /* #edf6ff 3*/
+        --color-info-dark: 17 50 100; /* #113264 12*/
+
+        --color-success: 24 121 78; /* #18794e */
+        --color-success-light: 233 249 238; /* #e9f9ee */
+        --color-success-dark: 25 59 45; /* #193b2d */
+
+        --color-warning: 119 95 40; /* #775f28 */
+        --color-warning-light: 255 248 198; /* #fff8c6 */
+        --color-warning-dark: 71 59 31; /* #473b1f */
+
+        --color-error: 198 42 47; /* #c62a2f */
+        --color-error-light: 255 239 239; /* #ffefef */
+        --color-error-dark: 100 23 35; /* #641723 */
+    }
+
+    html {
+        @apply bg-skin-neutral-1 text-skin-neutral-12;
+    }
+}
+
+@layer components {
+    .input-error {
+        @apply !ring-skin-error;
+    }
+}
