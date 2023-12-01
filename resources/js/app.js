@@ -2,6 +2,7 @@ import '../css/app.css'
 import 'remixicon/fonts/remixicon.css'
 
 import { createApp, h } from 'vue'
+import { createPinia } from 'pinia'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m'
@@ -30,6 +31,7 @@ createInertiaApp({
     },
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
+            .use(createPinia())
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(Translations)

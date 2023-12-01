@@ -21,7 +21,18 @@
             <tbody>
                 <AppDataTableRow v-for="item in posts.data" :key="item.id">
                     <AppDataTableData>
-                        {{ item.id }}
+                        <img
+                            v-if="item.image_url"
+                            :src="item.image_url"
+                            class="ml-3 h-10 w-10 rounded"
+                        />
+
+                        <div
+                            v-else
+                            class="ml-3 flex h-10 w-10 items-center justify-center rounded bg-gradient-to-bl from-skin-neutral-3 to-skin-neutral-6"
+                        >
+                            <span class="text-xs text-skin-neutral-9">N/A</span>
+                        </div>
                     </AppDataTableData>
 
                     <AppDataTableData>
@@ -98,7 +109,7 @@ const breadCrumb = [
     { label: 'Blogs', last: true }
 ]
 
-const headers = ['ID', 'Title', 'Status', 'Actions']
+const headers = ['Image', 'Title', 'Status', 'Actions']
 
 const getPostStatusClass = (status) => {
     if (status === 'Published') {

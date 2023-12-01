@@ -24,6 +24,7 @@ class PostController extends BackendController
             ->withQueryString()
             ->through(fn ($post) => [
                 'id' => $post->id,
+                'image_url' => $post->image_url,
                 'title' => $post->title,
                 'status' => $post->status,
             ]);

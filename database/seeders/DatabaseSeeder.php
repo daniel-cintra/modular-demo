@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         info('Creating blog posts...');
         $this->seedWithProgress(
             label: 'Post creation status',
-            steps: 6,
+            steps: 24,
             callback: fn () => Post::factory()->create(),
         );
         info('Blog posts created.');
