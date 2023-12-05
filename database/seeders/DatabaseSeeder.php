@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use Modules\Blog\Models\Category;
 use Modules\Blog\Models\Post;
 
 use function Laravel\Prompts\info;
@@ -27,9 +28,17 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         info('Users created.');
 
+        info('Creating blog categories...');
+        $this->seedWithProgress(
+            label: 'Categories creation status',
+            steps: 12,
+            callback: fn () => Category::factory()->create(),
+        );
+        info('Blog categories created.');
+
         info('Creating blog posts...');
         $this->seedWithProgress(
-            label: 'Post creation status',
+            label: 'Posts creation status',
             steps: 24,
             callback: fn () => Post::factory()->create(),
         );

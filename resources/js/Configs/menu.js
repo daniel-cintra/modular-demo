@@ -19,20 +19,13 @@ export default {
                     permission: 'Main Menu: Blog: Posts - List',
                     icon: 'ri-user-line',
                     link: route('blogPost.index')
+                },
+                {
+                    label: 'Categories',
+                    permission: 'Main Menu: Blog: Categories - List',
+                    icon: 'ri-shield-keyhole-line',
+                    link: route('blogCategory.index')
                 }
-                // {
-                //     label: 'Permissions',
-                //     permission:
-                //         'Main Menu: Access Control List: Permissions - List',
-                //     icon: 'ri-shield-keyhole-line',
-                //     link: route('aclPermission.index')
-                // },
-                // {
-                //     label: 'Roles',
-                //     permission: 'Main Menu: Access Control List: Roles - List',
-                //     icon: 'ri-account-box-line',
-                //     link: route('aclRole.index')
-                // }
             ]
         },
 

@@ -1,0 +1,48 @@
+<?php
+
+namespace Modules\Blog\Models;
+
+use Cviebrock\EloquentSluggable\Sluggable;
+use Database\Factories\BlogCategoryFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Support\Models\BaseModel;
+use Modules\Support\Traits\ActivityLog;
+use Modules\Support\Traits\Searchable;
+
+class Category extends BaseModel
+{
+    use ActivityLog, HasFactory, Searchable, Sluggable, SoftDeletes;
+
+    protected $table = 'blog_categories';
+
+    protected $appends = ['image_url'];
+
+    protected $casts = [
+        'is_visible' => 'boolean',
+    ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if ($this->image) {
+            return asset("blog/{$this->image}");
+        }
+
+        return null;
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return BlogCategoryFactory::new();
+    }
+}

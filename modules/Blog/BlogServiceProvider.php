@@ -3,6 +3,8 @@
 namespace Modules\Blog;
 
 use Modules\Support\BaseServiceProvider;
+use Modules\Blog\Observers\PostObserver;
+use Modules\Blog\Models\Post;
 
 class BlogServiceProvider extends BaseServiceProvider
 {
@@ -11,5 +13,7 @@ class BlogServiceProvider extends BaseServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Post::observe(PostObserver::class);
     }
 }

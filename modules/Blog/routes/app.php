@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Posts
 Route::post('blog-post/upload-editor-image', [
     'uses' => 'PostController@uploadEditorImage',
 ])->name('blogPost.uploadEditorImage');
@@ -29,3 +30,12 @@ Route::put('blog-post/{id}', [
 Route::delete('blog-post/{id}', [
     'uses' => 'PostController@destroy',
 ])->name('blogPost.destroy');
+
+// Categories
+Route::get('blog-category', [
+    'uses' => 'CategoryController@index',
+])->name('blogCategory.index');
+
+Route::get('blog-category/create', [
+    'uses' => 'CategoryController@create',
+])->name('blogCategory.create');

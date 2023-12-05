@@ -52,7 +52,7 @@ import { ref, onMounted } from 'vue'
 
 const props = defineProps({
     imagePreviewUrl: {
-        type: String,
+        type: [String, null],
         default: null
     }
 })

@@ -121,3 +121,7 @@
         @apply !ring-skin-error;
     }
 }
+
+#nprogress .bar {
+    height: 0.3125em !important;
+}

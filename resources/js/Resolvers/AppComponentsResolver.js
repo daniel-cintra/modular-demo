@@ -13,6 +13,7 @@ const componentGroups = {
         'AppCombobox',
         'AppDataSearch',
         'AppFormErrors',
+        'AppInputDate',
         'AppInputFile',
         'AppInputPassword',
         'AppInputText',
