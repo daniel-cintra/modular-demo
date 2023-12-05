@@ -7,36 +7,37 @@ use Modules\Blog\Http\Requests\CategoryValidate;
 use Modules\Blog\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class CategoryController extends BackendController
 {
     public function index(): Response
     {
-        $categorys = Category::orderBy('name')
+        $categories = Category::orderBy('name')
             ->search(request('searchContext'), request('searchTerm'))
             ->paginate(request('rowsPerPage', 10))
             ->withQueryString()
             ->through(fn ($category) => [
-                    'id' => $category->id,
-                    // 'name' => $category->name,
-                    'created_at' => $category->created_at->format('d/m/Y H:i') . 'h'
+                'id' => $category->id,
+                'name' => Str::limit($category->name, 50),
+                'created_at' => $category->created_at->format('d/m/Y H:i') . 'h'
             ]);
 
-        return inertia('Blog/CategoryIndex', [
-            'categorys' => $categorys
+        return inertia('BlogCategory/CategoryIndex', [
+            'categories' => $categories
         ]);
     }
 
     public function create(): Response
     {
-        return inertia('Blog/CategoryForm');
+        return inertia('BlogCategory/CategoryForm');
     }
 
     public function store(CategoryValidate $request): RedirectResponse
     {
         Category::create($request->validated());
 
-        return redirect()->route('category.index')
+        return redirect()->route('blogCategory.index')
             ->with('success', 'Category created.');
     }
 
@@ -44,7 +45,7 @@ class CategoryController extends BackendController
     {
         $category = Category::find($id);
 
-        return inertia('Blog/CategoryForm', [
+        return inertia('BlogCategory/CategoryForm', [
             'category' => $category
         ]);
     }
@@ -55,7 +56,7 @@ class CategoryController extends BackendController
 
         $category->update($request->validated());
 
-        return redirect()->route('category.index')
+        return redirect()->route('blogCategory.index')
             ->with('success', 'Category updated.');
     }
 
@@ -63,7 +64,7 @@ class CategoryController extends BackendController
     {
         Category::findOrFail($id)->delete();
 
-        return redirect()->route('category.index')
+        return redirect()->route('blogCategory.index')
             ->with('success', 'Category deleted.');
     }
 }

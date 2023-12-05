@@ -39,3 +39,7 @@ Route::get('blog-category', [
 Route::get('blog-category/create', [
     'uses' => 'CategoryController@create',
 ])->name('blogCategory.create');
+
+Route::delete('blog-category/{id}', [
+    'uses' => 'CategoryController@destroy',
+])->name('blogCategory.destroy');

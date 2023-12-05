@@ -1,5 +1,5 @@
 <template>
-    <AppSectionHeader title="Categorys" :bread-crumb="breadCrumb">
+    <AppSectionHeader title="Categories" :bread-crumb="breadCrumb">
     </AppSectionHeader>
 
     <AppCard class="w-full md:w-3/4 xl:w-1/2">
@@ -8,7 +8,7 @@
             <AppFormErrors class="mb-4" />
             <form>
                 <div>
-                    <AppLabel for="name">{{ __('Name') }}</AppLabel>
+                    <AppLabel for="name">Name</AppLabel>
                     <AppInputText
                         id="name"
                         v-model="form.name"
@@ -22,7 +22,7 @@
         </template>
         <template #footer>
             <AppButton class="btn btn-primary" @click="submitForm">
-                {{ __('Save') }}
+                Save
             </AppButton>
         </template>
     </AppCard>
@@ -36,32 +36,32 @@ import useFormContext from '@/Composables/useFormContext'
 import useFormErrors from '@/Composables/useFormErrors'
 
 const props = defineProps({
-  category: {
-    type: Object,
-    default: null
-  }
+    category: {
+        type: Object,
+        default: null
+    }
 })
 
 const breadCrumb = [
-  { label: 'Home', href: route('dashboard.index') },
-  { label: 'Categorys', href: route('category.index') },
-  { label: 'Category', last: true }
+    { label: 'Home', href: route('dashboard.index') },
+    { label: 'Categories', href: route('blogCategory.index') },
+    { label: 'Category', last: true }
 ]
 
 const { title } = useTitle('Category')
 
 const form = useForm({
-  name: props.category ? props.category.name : '',
+    name: props.category ? props.category.name : ''
 })
 
 const { isCreate } = useFormContext()
 
 const submitForm = () => {
-  if (isCreate.value) {
-    form.post(route('category.store'))
-  } else {
-    form.put(route('category.update', props.category.id))
-  }
+    if (isCreate.value) {
+        form.post(route('blogCategory.store'))
+    } else {
+        form.put(route('blogCategory.update', props.category.id))
+    }
 }
 
 const { errorsFields } = useFormErrors()

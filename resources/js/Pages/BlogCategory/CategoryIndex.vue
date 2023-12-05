@@ -1,9 +1,9 @@
 <template>
-    <AppSectionHeader title="Categorys" :bread-crumb="breadCrumb">
+    <AppSectionHeader title="Categories" :bread-crumb="breadCrumb">
         <template #right>
             <AppButton
                 class="btn btn-primary"
-                @click="$inertia.visit(route('category.create'))"
+                @click="$inertia.visit(route('blogCategory.create'))"
             >
                 Create Category
             </AppButton>
@@ -11,25 +11,22 @@
     </AppSectionHeader>
 
     <AppDataSearch
-        v-if="categorys.data.length || route().params.searchTerm"
-        :url="route('category.index')"
-        fields-to-search="id"
+        v-if="categories.data.length || route().params.searchTerm"
+        :url="route('blogCategory.index')"
+        fields-to-search="name"
     ></AppDataSearch>
 
-    <AppDataTable v-if="categorys.data.length" :headers="headers">
+    <AppDataTable v-if="categories.data.length" :headers="headers">
         <template #TableBody>
             <tbody>
-                <AppDataTableRow
-                    v-for="item in categorys.data"
-                    :key="item.id"
-                >
+                <AppDataTableRow v-for="item in categories.data" :key="item.id">
                     <AppDataTableData>
                         {{ item.id }}
                     </AppDataTableData>
 
-                    <!-- <AppDataTableData>
+                    <AppDataTableData>
                         {{ item.name }}
-                    </AppDataTableData> -->
+                    </AppDataTableData>
 
                     <AppDataTableData>
                         <!-- edit category -->
@@ -38,10 +35,7 @@
                                 class="btn btn-icon btn-primary"
                                 @click="
                                     $inertia.visit(
-                                        route(
-                                            'category.edit',
-                                            item.id
-                                        )
+                                        route('blogCategory.edit', item.id)
                                     )
                                 "
                             >
@@ -55,10 +49,7 @@
                                 class="btn btn-icon btn-destructive"
                                 @click="
                                     confirmDelete(
-                                        route(
-                                            'category.destroy',
-                                            item.id
-                                        )
+                                        route('blogCategory.destroy', item.id)
                                     )
                                 "
                             >
@@ -72,12 +63,12 @@
     </AppDataTable>
 
     <AppPaginator
-        :links="categorys.links"
+        :links="categories.links"
         class="mt-4 justify-center"
     ></AppPaginator>
 
-    <AppAlert v-if="!categorys.data.length" class="mt-4">
-        No categorys found.
+    <AppAlert v-if="!categories.data.length" class="mt-4">
+        No categories found.
     </AppAlert>
 
     <AppConfirmDialog ref="confirmDialogRef"></AppConfirmDialog>
@@ -87,18 +78,18 @@
 import { ref } from 'vue'
 
 const props = defineProps({
-  categorys: {
-    type: Object,
-    default: () => {}
-  }
+    categories: {
+        type: Object,
+        default: () => {}
+    }
 })
 
 const breadCrumb = [
-  { label: 'Home', href: route('dashboard.index') },
-  { label: 'Categorys', last: true }
+    { label: 'Home', href: route('dashboard.index') },
+    { label: 'Categories', last: true }
 ]
 
-const headers = ['ID', 'Actions']
+const headers = ['ID', 'Name', 'Actions']
 
 const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {

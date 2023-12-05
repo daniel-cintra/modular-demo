@@ -17,13 +17,13 @@ export default {
                 {
                     label: 'Posts',
                     permission: 'Main Menu: Blog: Posts - List',
-                    icon: 'ri-user-line',
+                    icon: 'ri-draft-line',
                     link: route('blogPost.index')
                 },
                 {
                     label: 'Categories',
                     permission: 'Main Menu: Blog: Categories - List',
-                    icon: 'ri-shield-keyhole-line',
+                    icon: 'ri-folders-line',
                     link: route('blogCategory.index')
                 }
             ]
