@@ -1,20 +1,18 @@
 import { defineStore } from 'pinia'
 import slug from '@resources/js/Utils/slug.js'
 
-export const usePostStore = defineStore('PostStore', {
+export const useCategoryStore = defineStore('CategoryStore', {
     state: () => {
         return {
-            post: {
-                blog_category_id: null,
-
-                title: '',
-                content: '',
+            category: {
+                name: '',
+                description: '',
                 image: null,
+
+                is_visible: false,
 
                 meta_tag_title: '',
                 meta_tag_description: '',
-
-                published_at: '',
 
                 remove_previous_image: false
             }
@@ -22,12 +20,12 @@ export const usePostStore = defineStore('PostStore', {
     },
 
     actions: {
-        setPost(post) {
-            this.post = post
+        setCategory(category) {
+            this.category = category
         },
         initSeoTags() {
-            this.post.meta_tag_title = this.post.title.substring(0, 60)
-            this.post.meta_tag_description = this.post.content.replace(
+            this.category.meta_tag_title = this.category.name.substring(0, 60)
+            this.category.meta_tag_description = this.category.content.replace(
                 /<\/?[^>]+(>|$)/g,
                 ''
             )
@@ -37,24 +35,24 @@ export const usePostStore = defineStore('PostStore', {
     getters: {
         getRemainingChars: (state) => {
             return (key, max) => {
-                if (!state.post[key]) return max
+                if (!state.category[key]) return max
 
-                return max - state.post[key].length
+                return max - state.category[key].length
             }
         },
 
         showSeoAlert: (state) => {
             return () => {
                 if (
-                    state.post.meta_tag_title &&
-                    state.post.meta_tag_title.length
+                    state.category.meta_tag_title &&
+                    state.category.meta_tag_title.length
                 ) {
                     return false
                 }
 
                 if (
-                    state.post.title.length > 1 &&
-                    state.post.content.length > 2
+                    state.category.name.length > 1 &&
+                    state.category.content.length > 2
                 ) {
                     return false
                 }
@@ -65,9 +63,9 @@ export const usePostStore = defineStore('PostStore', {
 
         getSlug: (state) => {
             return () => {
-                if (!state.post.title) return ''
+                if (!state.category.name) return ''
 
-                return slug(state.post.title)
+                return slug(state.category.name)
             }
         }
     }

@@ -9,8 +9,8 @@ class PostValidate extends Request
     public function rules(): array
     {
         return [
-            'blog_author_id' => 'nullable|exists:authors,id',
-            'blog_category_id' => 'nullable|exists:categories,id',
+            'blog_author_id' => 'nullable|exists:blog_authors,id',
+            'blog_category_id' => 'nullable|exists:blog_categories,id',
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'image' => 'nullable|image|max:5120', // allows only image files, max size 5MB

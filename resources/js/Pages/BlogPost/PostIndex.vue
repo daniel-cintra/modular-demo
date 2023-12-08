@@ -112,11 +112,7 @@ const breadCrumb = [
 const headers = ['Image', 'Title', 'Status', 'Actions']
 
 const getPostStatusClass = (status) => {
-    if (status === 'Published') {
-        return 'published'
-    } else {
-        return 'draft'
-    }
+    return status === 'Published' ? 'published' : 'draft'
 }
 
 const confirmDialogRef = ref(null)

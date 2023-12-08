@@ -8,9 +8,13 @@ use Modules\Blog\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Illuminate\Support\Str;
+use Modules\Support\Traits\EditorImage;
+use Modules\Support\Traits\UploadFile;
 
 class CategoryController extends BackendController
 {
+    use EditorImage, UploadFile;
+
     public function index(): Response
     {
         $categories = Category::orderBy('name')
@@ -19,7 +23,9 @@ class CategoryController extends BackendController
             ->withQueryString()
             ->through(fn ($category) => [
                 'id' => $category->id,
+                'image_url' => $category->image_url,
                 'name' => Str::limit($category->name, 50),
+                'is_visible' => $category->is_visible,
                 'created_at' => $category->created_at->format('d/m/Y H:i') . 'h'
             ]);
 
@@ -35,7 +41,14 @@ class CategoryController extends BackendController
 
     public function store(CategoryValidate $request): RedirectResponse
     {
-        Category::create($request->validated());
+
+        $categoryData = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $categoryData = array_merge($categoryData, $this->uploadFile('image', 'blog', 'originalUUID', 'public'));
+        }
+
+        Category::create($categoryData);
 
         return redirect()->route('blogCategory.index')
             ->with('success', 'Category created.');
@@ -54,7 +67,17 @@ class CategoryController extends BackendController
     {
         $category = Category::findOrFail($id);
 
-        $category->update($request->validated());
+        $categoryData = $request->validated();
+
+        if ($request->input('remove_previous_image')) {
+            $categoryData = array_merge($categoryData, ['image' => null]);
+        }
+
+        if ($request->hasFile('image')) {
+            $categoryData = array_merge($categoryData, $this->uploadFile('image', 'blog', 'originalUUID', 'public'));
+        }
+
+        $category->update($categoryData);
 
         return redirect()->route('blogCategory.index')
             ->with('success', 'Category updated.');

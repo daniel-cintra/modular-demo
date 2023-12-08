@@ -6,18 +6,14 @@
         <template #title> {{ title }} </template>
         <template #content>
             <AppFormErrors class="mb-4" />
-            <form>
-                <div>
-                    <AppLabel for="name">Name</AppLabel>
-                    <AppInputText
-                        id="name"
-                        v-model="form.name"
-                        type="text"
-                        :class="{
-                            'input-error': errorsFields.includes('name')
-                        }"
-                    />
-                </div>
+            <form class="pt-4">
+                <CategoryBody />
+
+                <CategoryImage />
+
+                <CategorySeo />
+
+                <CategoryVisibility />
             </form>
         </template>
         <template #footer>
@@ -30,16 +26,30 @@
 
 <script setup>
 import { useForm } from '@inertiajs/vue3'
-
+import { onUnmounted } from 'vue'
 import useTitle from '@/Composables/useTitle'
 import useFormContext from '@/Composables/useFormContext'
 import useFormErrors from '@/Composables/useFormErrors'
+import CategoryBody from './Components/CategoryBody.vue'
+import CategoryImage from './Components/CategoryImage.vue'
+import CategorySeo from './Components/CategorySeo.vue'
+import CategoryVisibility from './Components/CategoryVisibility.vue'
+import { useCategoryStore } from './CategoryStore'
+const categoryStore = useCategoryStore()
 
 const props = defineProps({
     category: {
         type: Object,
         default: null
     }
+})
+
+if (props.category) {
+    categoryStore.setCategory(props.category)
+}
+
+onUnmounted(() => {
+    categoryStore.$reset()
 })
 
 const breadCrumb = [
@@ -49,18 +59,18 @@ const breadCrumb = [
 ]
 
 const { title } = useTitle('Category')
-
-const form = useForm({
-    name: props.category ? props.category.name : ''
-})
-
 const { isCreate } = useFormContext()
 
 const submitForm = () => {
+    const form = useForm(categoryStore.category)
+
     if (isCreate.value) {
         form.post(route('blogCategory.store'))
     } else {
-        form.put(route('blogCategory.update', props.category.id))
+        form.transform((data) => ({
+            ...data,
+            _method: 'PUT'
+        })).post(route('blogCategory.update', props.category.id))
     }
 }
 

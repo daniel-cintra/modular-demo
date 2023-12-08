@@ -1,0 +1,30 @@
+<template>
+    <AppLabel class="mb-1 mt-5">Category</AppLabel>
+    <AppCombobox
+        v-model="postStore.post.blog_category_id"
+        :options="categories"
+        combo-label="Select a Category"
+        class="w-full"
+    />
+</template>
+
+<script setup>
+import { onMounted } from 'vue'
+import { usePostStore } from '../PostStore'
+const postStore = usePostStore()
+
+const props = defineProps({
+    categories: {
+        type: Object,
+        default: () => {}
+    }
+})
+
+onMounted(() => {
+    if (postStore.post.blog_category_id) {
+        postStore.post.blog_category_id = props.categories.find(
+            (category) => category.value === postStore.post.blog_category_id
+        )
+    }
+})
+</script>

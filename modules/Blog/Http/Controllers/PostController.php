@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Modules\Blog\Http\Requests\PostValidate;
 use Modules\Blog\Models\Post;
+use Modules\Blog\Services\CategoryService;
 use Modules\Support\Http\Controllers\BackendController;
 use Modules\Support\Traits\EditorImage;
 use Modules\Support\Traits\UploadFile;
@@ -34,9 +35,11 @@ class PostController extends BackendController
         ]);
     }
 
-    public function create(): Response
+    public function create(CategoryService $categoryService): Response
     {
-        return inertia('BlogPost/PostForm');
+        return inertia('BlogPost/PostForm', [
+            'categories' => $categoryService->get(),
+        ]);
     }
 
     public function store(PostValidate $request): RedirectResponse
@@ -53,12 +56,11 @@ class PostController extends BackendController
             ->with('success', 'Post created.');
     }
 
-    public function edit(int $id): Response
+    public function edit(int $id, CategoryService $categoryService): Response
     {
-        $post = Post::find($id);
-
         return inertia('BlogPost/PostForm', [
-            'post' => $post,
+            'post' => Post::find($id),
+            'categories' => $categoryService->get(),
         ]);
     }
 

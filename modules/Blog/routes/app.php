@@ -32,6 +32,10 @@ Route::delete('blog-post/{id}', [
 ])->name('blogPost.destroy');
 
 // Categories
+Route::post('blog-category/upload-editor-image', [
+    'uses' => 'CategoryController@uploadEditorImage',
+])->name('blogCategory.uploadEditorImage');
+
 Route::get('blog-category', [
     'uses' => 'CategoryController@index',
 ])->name('blogCategory.index');
@@ -39,6 +43,18 @@ Route::get('blog-category', [
 Route::get('blog-category/create', [
     'uses' => 'CategoryController@create',
 ])->name('blogCategory.create');
+
+Route::get('blog-category/{id}/edit', [
+    'uses' => 'CategoryController@edit',
+])->name('blogCategory.edit');
+
+Route::post('blog-category', [
+    'uses' => 'CategoryController@store',
+])->name('blogCategory.store');
+
+Route::put('blog-category/{id}', [
+    'uses' => 'CategoryController@update',
+])->name('blogCategory.update');
 
 Route::delete('blog-category/{id}', [
     'uses' => 'CategoryController@destroy',

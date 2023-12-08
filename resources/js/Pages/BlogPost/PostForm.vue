@@ -17,7 +17,7 @@
             </template>
             <template #footer>
                 <AppButton class="btn btn-primary" @click="submitForm">
-                    {{ __('Save') }}
+                    Save
                 </AppButton>
             </template>
         </AppCard>
@@ -26,6 +26,8 @@
             <template #title> Post Info </template>
             <template #content>
                 <PostPublishDate />
+
+                <PostCategories :categories="categories" />
             </template>
         </AppCard>
     </div>
@@ -42,6 +44,7 @@ import PostBody from './Components/PostBody.vue'
 import PostImage from './Components/PostImage.vue'
 import PostSeo from './Components/PostSeo.vue'
 import PostPublishDate from './Components/PostPublishDate.vue'
+import PostCategories from './Components/PostCategories.vue'
 import { usePostStore } from './PostStore'
 const postStore = usePostStore()
 
@@ -49,6 +52,11 @@ const props = defineProps({
     post: {
         type: Object,
         default: null
+    },
+
+    categories: {
+        type: Object,
+        default: () => {}
     }
 })
 
@@ -73,10 +81,18 @@ const submitForm = () => {
     const form = useForm(postStore.post)
 
     if (isCreate.value) {
-        form.post(route('blogPost.store'))
+        form.transform((data) => ({
+            ...data,
+            blog_category_id: data.blog_category_id
+                ? data.blog_category_id.value
+                : null
+        })).post(route('blogPost.store'))
     } else {
         form.transform((data) => ({
             ...data,
+            blog_category_id: data.blog_category_id
+                ? data.blog_category_id.value
+                : null,
             _method: 'PUT'
         })).post(route('blogPost.update', props.post.id))
     }

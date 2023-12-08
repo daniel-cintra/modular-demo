@@ -11,10 +11,11 @@ class CategoryValidate extends Request
         return [
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image|max:5120',
             'is_visible' => 'required|boolean',
             'meta_tag_title' => 'nullable|string|max:60',
             'meta_tag_description' => 'nullable|string|max:160',
+            'blog_category_id' => 'nullable|exists:blog_categories,id',
         ];
     }
 }

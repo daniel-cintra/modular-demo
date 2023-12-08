@@ -21,11 +21,31 @@
             <tbody>
                 <AppDataTableRow v-for="item in categories.data" :key="item.id">
                     <AppDataTableData>
-                        {{ item.id }}
+                        <img
+                            v-if="item.image_url"
+                            :src="item.image_url"
+                            class="ml-3 h-10 w-10 rounded"
+                        />
+
+                        <div
+                            v-else
+                            class="ml-3 flex h-10 w-10 items-center justify-center rounded bg-gradient-to-bl from-skin-neutral-3 to-skin-neutral-6"
+                        >
+                            <span class="text-xs text-skin-neutral-9">N/A</span>
+                        </div>
                     </AppDataTableData>
 
                     <AppDataTableData>
                         {{ item.name }}
+                    </AppDataTableData>
+
+                    <AppDataTableData>
+                        <span
+                            class="rounded px-3 py-1 text-sm"
+                            :class="getCategoryVisibilityClass(item.is_visible)"
+                        >
+                            {{ item.is_visible ? 'Visible' : 'Invisible' }}
+                        </span>
                     </AppDataTableData>
 
                     <AppDataTableData>
@@ -89,10 +109,24 @@ const breadCrumb = [
     { label: 'Categories', last: true }
 ]
 
-const headers = ['ID', 'Name', 'Actions']
+const headers = ['Image', 'Name', 'Visibility', 'Actions']
+
+const getCategoryVisibilityClass = (isVisible) => {
+    return isVisible ? 'category-visible' : 'category-invisible'
+}
 
 const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
 }
 </script>
+
+<style scoped>
+.category-visible {
+    @apply bg-skin-success-light  text-skin-success;
+}
+
+.category-invisible {
+    @apply bg-skin-warning-light  text-skin-warning;
+}
+</style>
