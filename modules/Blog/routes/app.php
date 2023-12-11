@@ -59,3 +59,28 @@ Route::put('blog-category/{id}', [
 Route::delete('blog-category/{id}', [
     'uses' => 'CategoryController@destroy',
 ])->name('blogCategory.destroy');
+
+// Authors
+Route::get('blog-author', [
+    'uses' => 'AuthorController@index',
+])->name('blogAuthor.index');
+
+Route::get('blog-author/create', [
+    'uses' => 'AuthorController@create',
+])->name('blogAuthor.create');
+
+Route::get('blog-author/{id}/edit', [
+    'uses' => 'AuthorController@edit',
+])->name('blogAuthor.edit');
+
+Route::post('blog-author', [
+    'uses' => 'AuthorController@store',
+])->name('blogAuthor.store');
+
+Route::put('blog-author/{id}', [
+    'uses' => 'AuthorController@update',
+])->name('blogAuthor.update');
+
+Route::delete('blog-author/{id}', [
+    'uses' => 'AuthorController@destroy',
+])->name('blogAuthor.destroy');

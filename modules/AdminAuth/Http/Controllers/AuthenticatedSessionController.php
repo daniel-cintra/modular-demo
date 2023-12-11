@@ -24,7 +24,6 @@ class AuthenticatedSessionController extends AppController
      * Handle an incoming authentication request.
      *
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function login(LoginRequest $request)

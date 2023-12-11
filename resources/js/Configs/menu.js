@@ -25,6 +25,12 @@ export default {
                     permission: 'Main Menu: Blog: Categories - List',
                     icon: 'ri-folders-line',
                     link: route('blogCategory.index')
+                },
+                {
+                    label: 'Authors',
+                    permission: 'Main Menu: Blog: Authors - List',
+                    icon: 'ri-team-line',
+                    link: route('blogAuthor.index')
                 }
             ]
         },

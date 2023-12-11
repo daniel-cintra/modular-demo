@@ -2,9 +2,9 @@
 
 namespace Modules\Blog;
 
-use Modules\Support\BaseServiceProvider;
-use Modules\Blog\Observers\PostObserver;
 use Modules\Blog\Models\Post;
+use Modules\Blog\Observers\PostObserver;
+use Modules\Support\BaseServiceProvider;
 
 class BlogServiceProvider extends BaseServiceProvider
 {

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use Modules\Blog\Models\Author;
 use Modules\Blog\Models\Category;
 use Modules\Blog\Models\Post;
 
@@ -35,6 +36,14 @@ class DatabaseSeeder extends Seeder
             callback: fn () => Category::factory()->create(),
         );
         info('Blog categories created.');
+
+        info('Creating blog authors...');
+        $this->seedWithProgress(
+            label: 'Authors creation status',
+            steps: 12,
+            callback: fn () => Author::factory()->create(),
+        );
+        info('Blog authors created.');
 
         info('Creating blog posts...');
         $this->seedWithProgress(

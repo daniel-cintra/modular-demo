@@ -1,25 +1,25 @@
 <template>
-    <AppSectionHeader title="Categories" :bread-crumb="breadCrumb">
+    <AppSectionHeader title="Authors" :bread-crumb="breadCrumb">
         <template #right>
             <AppButton
                 class="btn btn-primary"
-                @click="$inertia.visit(route('blogCategory.create'))"
+                @click="$inertia.visit(route('blogAuthor.create'))"
             >
-                Create Category
+                Create Author
             </AppButton>
         </template>
     </AppSectionHeader>
 
     <AppDataSearch
-        v-if="categories.data.length || route().params.searchTerm"
-        :url="route('blogCategory.index')"
+        v-if="authors.data.length || route().params.searchTerm"
+        :url="route('blogAuthor.index')"
         fields-to-search="name"
     ></AppDataSearch>
 
-    <AppDataTable v-if="categories.data.length" :headers="headers">
+    <AppDataTable v-if="authors.data.length" :headers="headers">
         <template #TableBody>
             <tbody>
-                <AppDataTableRow v-for="item in categories.data" :key="item.id">
+                <AppDataTableRow v-for="item in authors.data" :key="item.id">
                     <AppDataTableData>
                         <img
                             v-if="item.image_url"
@@ -31,26 +31,29 @@
                     </AppDataTableData>
 
                     <AppDataTableData>
-                        {{ item.name }}
+                        {{ item.name }}<br />
+                        <small class="text-sm text-skin-neutral-9">{{
+                            item.email
+                        }}</small>
                     </AppDataTableData>
 
                     <AppDataTableData>
-                        <span
-                            class="rounded px-3 py-1 text-sm"
-                            :class="getCategoryVisibilityClass(item.is_visible)"
-                        >
-                            {{ item.is_visible ? 'Visible' : 'Invisible' }}
-                        </span>
+                        <small class="text-sm text-skin-neutral-9">
+                            <i class="ri-github-fill mr-0 h-5 w-5"></i>
+                            {{ item.github_handle }}<br />
+                            <i class="ri-twitter-x-line mr-1 h-5 w-5"></i
+                            >{{ item.twitter_handle }}
+                        </small>
                     </AppDataTableData>
 
                     <AppDataTableData>
-                        <!-- edit category -->
-                        <AppTooltip text="Edit Category" class="mr-3">
+                        <!-- edit author -->
+                        <AppTooltip text="Edit Author" class="mr-3">
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
                                     $inertia.visit(
-                                        route('blogCategory.edit', item.id)
+                                        route('blogAuthor.edit', item.id)
                                     )
                                 "
                             >
@@ -58,13 +61,13 @@
                             </AppButton>
                         </AppTooltip>
 
-                        <!-- delete category -->
-                        <AppTooltip text="Delete Category">
+                        <!-- delete author -->
+                        <AppTooltip text="Delete Author">
                             <AppButton
                                 class="btn btn-icon btn-destructive"
                                 @click="
                                     confirmDelete(
-                                        route('blogCategory.destroy', item.id)
+                                        route('blogAuthor.destroy', item.id)
                                     )
                                 "
                             >
@@ -78,23 +81,22 @@
     </AppDataTable>
 
     <AppPaginator
-        :links="categories.links"
+        :links="authors.links"
         class="mt-4 justify-center"
     ></AppPaginator>
 
-    <AppAlert v-if="!categories.data.length" class="mt-4">
-        No categories found.
+    <AppAlert v-if="!authors.data.length" class="mt-4">
+        No authors found.
     </AppAlert>
 
     <AppConfirmDialog ref="confirmDialogRef"></AppConfirmDialog>
 </template>
 
 <script setup>
-import AppImageNotAvailable from '@/Components/Misc/AppImageNotAvailable.vue'
 import { ref } from 'vue'
 
 const props = defineProps({
-    categories: {
+    authors: {
         type: Object,
         default: () => {}
     }
@@ -102,27 +104,13 @@ const props = defineProps({
 
 const breadCrumb = [
     { label: 'Home', href: route('dashboard.index') },
-    { label: 'Categories', last: true }
+    { label: 'Authors', last: true }
 ]
 
-const headers = ['Image', 'Name', 'Visibility', 'Actions']
-
-const getCategoryVisibilityClass = (isVisible) => {
-    return isVisible ? 'category-visible' : 'category-invisible'
-}
+const headers = ['Image', 'Name/Email', 'Social', 'Actions']
 
 const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
 }
 </script>
-
-<style scoped>
-.category-visible {
-    @apply bg-skin-success-light  text-skin-success;
-}
-
-.category-invisible {
-    @apply bg-skin-warning-light  text-skin-warning;
-}
-</style>

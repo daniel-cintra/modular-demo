@@ -2,12 +2,12 @@
 
 namespace Modules\Blog\Http\Controllers;
 
-use Modules\Support\Http\Controllers\BackendController;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+use Inertia\Response;
 use Modules\Blog\Http\Requests\CategoryValidate;
 use Modules\Blog\Models\Category;
-use Illuminate\Http\RedirectResponse;
-use Inertia\Response;
-use Illuminate\Support\Str;
+use Modules\Support\Http\Controllers\BackendController;
 use Modules\Support\Traits\EditorImage;
 use Modules\Support\Traits\UploadFile;
 
@@ -26,11 +26,11 @@ class CategoryController extends BackendController
                 'image_url' => $category->image_url,
                 'name' => Str::limit($category->name, 50),
                 'is_visible' => $category->is_visible,
-                'created_at' => $category->created_at->format('d/m/Y H:i') . 'h'
+                'created_at' => $category->created_at->format('d/m/Y H:i').'h',
             ]);
 
         return inertia('BlogCategory/CategoryIndex', [
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
@@ -59,7 +59,7 @@ class CategoryController extends BackendController
         $category = Category::find($id);
 
         return inertia('BlogCategory/CategoryForm', [
-            'category' => $category
+            'category' => $category,
         ]);
     }
 

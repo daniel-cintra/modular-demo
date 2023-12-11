@@ -34,10 +34,10 @@ class BlogCategoryFactory extends Factory
         try {
             $image = file_get_contents('https://source.unsplash.com/random/320x75?nature');
         } catch (Throwable $exception) {
-            return 'Error fetching image: ' . $exception->getMessage();
+            return 'Error fetching image: '.$exception->getMessage();
         }
 
-        $fileName = Str::uuid() . '.jpg';
+        $fileName = Str::uuid().'.jpg';
 
         Storage::disk('public')->put("blog/$fileName", $image);
 

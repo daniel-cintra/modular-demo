@@ -19,6 +19,7 @@ class GetUserPermissions
             return $this->mapPermissions($user->permissions);
             //get the permissions via roles
         }
+
         return $this->mapPermissions($user->getAllPermissions());
     }
 

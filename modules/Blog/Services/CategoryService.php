@@ -2,8 +2,8 @@
 
 namespace Modules\Blog\Services;
 
-use Modules\Blog\Models\Category;
 use Illuminate\Support\Str;
+use Modules\Blog\Models\Category;
 
 class CategoryService
 {

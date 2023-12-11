@@ -15,14 +15,14 @@ class PostObserver
 
     private function setMetaTagTitle(Post $post): void
     {
-        if (!request()->has('meta_tag_title') or empty(request('meta_tag_title'))) {
+        if (! request()->has('meta_tag_title') or empty(request('meta_tag_title'))) {
             $post->meta_tag_title = Str::limit($post->title, 60, '');
         }
     }
 
     private function setMetaTagDescription(Post $post): void
     {
-        if (!request()->has('meta_tag_description') or empty(request('meta_tag_description'))) {
+        if (! request()->has('meta_tag_description') or empty(request('meta_tag_description'))) {
             $description = strip_tags((string) $post->content);
 
             // Add a space after punctuation, with exceptions for digits and ellipsis
