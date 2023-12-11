@@ -27,7 +27,7 @@ class AuthorController extends BackendController
                 'email' => $author->email,
                 'github_handle' => $author->github_handle,
                 'twitter_handle' => $author->twitter_handle,
-                'created_at' => $author->created_at->format('d/m/Y H:i') . 'h',
+                'created_at' => $author->created_at->format('d/m/Y H:i').'h',
             ]);
 
         return inertia('BlogAuthor/AuthorIndex', [
