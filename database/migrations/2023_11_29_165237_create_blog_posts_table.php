@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('blog_author_id')->nullable()->cascadeOnDelete();
-            $table->foreignId('blog_category_id')->nullable()->nullOnDelete();
+            $table->foreignId('blog_author_id')->nullable();
+            $table->foreignId('blog_category_id')->nullable();
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content');
@@ -24,6 +24,9 @@ return new class extends Migration
             $table->date('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('blog_author_id')->references('id')->on('blog_authors')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreign('blog_category_id')->references('id')->on('blog_categories')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
