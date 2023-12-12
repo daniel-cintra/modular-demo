@@ -7,6 +7,7 @@ use Inertia\Response;
 use Modules\Blog\Http\Requests\PostValidate;
 use Modules\Blog\Models\Post;
 use Modules\Blog\Services\CategoryService;
+use Modules\Blog\Services\AuthorService;
 use Modules\Support\Http\Controllers\BackendController;
 use Modules\Support\Traits\EditorImage;
 use Modules\Support\Traits\UploadFile;
@@ -35,10 +36,11 @@ class PostController extends BackendController
         ]);
     }
 
-    public function create(CategoryService $categoryService): Response
+    public function create(CategoryService $categoryService, AuthorService $authorService): Response
     {
         return inertia('BlogPost/PostForm', [
             'categories' => $categoryService->get(),
+            'authors' => $authorService->get(),
         ]);
     }
 
@@ -56,11 +58,12 @@ class PostController extends BackendController
             ->with('success', 'Post created.');
     }
 
-    public function edit(int $id, CategoryService $categoryService): Response
+    public function edit(int $id, CategoryService $categoryService, AuthorService $authorService): Response
     {
         return inertia('BlogPost/PostForm', [
             'post' => Post::find($id),
             'categories' => $categoryService->get(),
+            'authors' => $authorService->get(),
         ]);
     }
 
@@ -76,6 +79,8 @@ class PostController extends BackendController
 
         if ($request->hasFile('image')) {
             $postData = array_merge($postData, $this->uploadFile('image', 'blog', 'originalUUID', 'public'));
+        } else {
+            unset($postData['image']);
         }
 
         $post->update($postData);

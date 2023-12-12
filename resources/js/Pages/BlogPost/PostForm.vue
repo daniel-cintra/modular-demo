@@ -27,7 +27,9 @@
             <template #content>
                 <PostPublishDate />
 
-                <PostCategories :categories="categories" />
+                <PostCategory :categories="categories" />
+
+                <PostAuthor :authors="authors" />
             </template>
         </AppCard>
     </div>
@@ -44,7 +46,8 @@ import PostBody from './Components/PostBody.vue'
 import PostImage from './Components/PostImage.vue'
 import PostSeo from './Components/PostSeo.vue'
 import PostPublishDate from './Components/PostPublishDate.vue'
-import PostCategories from './Components/PostCategories.vue'
+import PostCategory from './Components/PostCategory.vue'
+import PostAuthor from './Components/PostAuthor.vue'
 import { usePostStore } from './PostStore'
 const postStore = usePostStore()
 
@@ -55,6 +58,11 @@ const props = defineProps({
     },
 
     categories: {
+        type: Object,
+        default: () => {}
+    },
+
+    authors: {
         type: Object,
         default: () => {}
     }
@@ -77,24 +85,27 @@ const breadCrumb = [
 const { title } = useTitle('Blog Post')
 const { isCreate } = useFormContext()
 
+const getValueFromKey = (data, key) => {
+    return data[key] ? data[key].value : null
+}
+
 const submitForm = () => {
     const form = useForm(postStore.post)
 
+    const postData = (data) => {
+        const commonData = {
+            ...data,
+            blog_category_id: getValueFromKey(data, 'blog_category_id'),
+            blog_author_id: getValueFromKey(data, 'blog_author_id')
+        }
+
+        return isCreate.value ? commonData : { ...commonData, _method: 'PUT' }
+    }
+
     if (isCreate.value) {
-        form.transform((data) => ({
-            ...data,
-            blog_category_id: data.blog_category_id
-                ? data.blog_category_id.value
-                : null
-        })).post(route('blogPost.store'))
+        form.transform(postData).post(route('blogPost.store'))
     } else {
-        form.transform((data) => ({
-            ...data,
-            blog_category_id: data.blog_category_id
-                ? data.blog_category_id.value
-                : null,
-            _method: 'PUT'
-        })).post(route('blogPost.update', props.post.id))
+        form.transform(postData).post(route('blogPost.update', props.post.id))
     }
 }
 </script>

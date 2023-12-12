@@ -6,6 +6,7 @@ export const usePostStore = defineStore('PostStore', {
         return {
             post: {
                 blog_category_id: null,
+                blog_author_id: null,
 
                 title: '',
                 content: '',

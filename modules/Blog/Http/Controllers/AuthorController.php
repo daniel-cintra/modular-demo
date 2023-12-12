@@ -27,7 +27,7 @@ class AuthorController extends BackendController
                 'email' => $author->email,
                 'github_handle' => $author->github_handle,
                 'twitter_handle' => $author->twitter_handle,
-                'created_at' => $author->created_at->format('d/m/Y H:i').'h',
+                'created_at' => $author->created_at->format('d/m/Y H:i') . 'h',
             ]);
 
         return inertia('BlogAuthor/AuthorIndex', [
@@ -75,6 +75,8 @@ class AuthorController extends BackendController
 
         if ($request->hasFile('image')) {
             $authorData = array_merge($authorData, $this->uploadFile('image', 'blog', 'originalUUID', 'public'));
+        } else {
+            unset($authorData['image']);
         }
 
         $author->update($authorData);

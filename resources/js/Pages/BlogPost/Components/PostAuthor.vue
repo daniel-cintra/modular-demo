@@ -1,0 +1,30 @@
+<template>
+    <AppLabel class="mb-1 mt-5">Author</AppLabel>
+    <AppCombobox
+        v-model="postStore.post.blog_author_id"
+        :options="authors"
+        combo-label="Select an Author"
+        class="w-full"
+    />
+</template>
+
+<script setup>
+import { onMounted } from 'vue'
+import { usePostStore } from '../PostStore'
+const postStore = usePostStore()
+
+const props = defineProps({
+    authors: {
+        type: Object,
+        default: () => {}
+    }
+})
+
+onMounted(() => {
+    if (postStore.post.blog_author_id) {
+        postStore.post.blog_author_id = props.authors.find(
+            (author) => author.value === postStore.post.blog_author_id
+        )
+    }
+})
+</script>

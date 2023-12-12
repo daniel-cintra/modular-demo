@@ -101,7 +101,7 @@ const props = defineProps({
 
 const breadCrumb = [
     { label: 'Home', href: route('dashboard.index') },
-    { label: 'Blogs', last: true }
+    { label: 'Posts', last: true }
 ]
 
 const headers = ['Image', 'Title', 'Status', 'Actions']
