@@ -26,7 +26,7 @@ class CategoryController extends BackendController
                 'image_url' => $category->image_url,
                 'name' => Str::limit($category->name, 50),
                 'is_visible' => $category->is_visible,
-                'created_at' => $category->created_at->format('d/m/Y H:i') . 'h',
+                'created_at' => $category->created_at->format('d/m/Y H:i').'h',
             ]);
 
         return inertia('BlogCategory/CategoryIndex', [
