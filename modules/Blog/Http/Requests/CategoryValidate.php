@@ -15,7 +15,6 @@ class CategoryValidate extends Request
             'is_visible' => 'required|boolean',
             'meta_tag_title' => 'nullable|string|max:60',
             'meta_tag_description' => 'nullable|string|max:160',
-            'blog_category_id' => 'nullable|exists:blog_categories,id',
         ];
     }
 }

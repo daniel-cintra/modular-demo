@@ -16,6 +16,8 @@ class Author extends BaseModel
 
     protected $table = 'blog_authors';
 
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
     protected $appends = ['image_url'];
 
     public function getImageUrlAttribute(): ?string

@@ -29,7 +29,6 @@ test('author list can be rendered', function () {
                     ->where('image_url', $this->author->image_url)
                     ->where('github_handle', $this->author->github_handle)
                     ->where('twitter_handle', $this->author->twitter_handle)
-                    ->where('created_at', $this->author->created_at->format('d/m/Y H:i\h'))
             )
     );
 });
@@ -80,7 +79,6 @@ test('author edit page can be rendered', function () {
                     ->where('image_url', $this->author->image_url)
                     ->where('github_handle', $this->author->github_handle)
                     ->where('twitter_handle', $this->author->twitter_handle)
-                    ->etc()
             )
     );
 });
@@ -107,7 +105,6 @@ test('author can be updated', function () {
                     ->where('image_url', $this->author->image_url)
                     ->where('github_handle', $this->author->github_handle)
                     ->where('twitter_handle', $this->author->twitter_handle)
-                    ->where('created_at', $this->author->created_at->format('d/m/Y H:i\h'))
             )
     );
 });

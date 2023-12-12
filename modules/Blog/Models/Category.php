@@ -17,6 +17,8 @@ class Category extends BaseModel
 
     protected $table = 'blog_categories';
 
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
     protected $appends = ['image_url'];
 
     protected $casts = [
