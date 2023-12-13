@@ -18,6 +18,8 @@ class Post extends BaseModel
 
     protected $table = 'blog_posts';
 
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
     protected $appends = ['image_url'];
 
     public function sluggable(): array
