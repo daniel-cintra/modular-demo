@@ -14,7 +14,7 @@ beforeEach(function () {
 
 afterEach(function () {
     if ($this->post->image) {
-        Storage::disk('public')->delete('blog/' . $this->post->image);
+        Storage::disk('public')->delete('blog/'.$this->post->image);
     }
 });
 
@@ -69,7 +69,7 @@ test('post can be created', function () {
 });
 
 test('post edit page can be rendered', function () {
-    $response = $this->loggedRequest->get('/blog-post/' . $this->post->id . '/edit');
+    $response = $this->loggedRequest->get('/blog-post/'.$this->post->id.'/edit');
 
     $response->assertStatus(200);
 
@@ -95,7 +95,7 @@ test('post edit page can be rendered', function () {
 });
 
 test('post can be updated', function () {
-    $response = $this->loggedRequest->put('/blog-post/' . $this->post->id, [
+    $response = $this->loggedRequest->put('/blog-post/'.$this->post->id, [
         'blog_author_id' => null,
         'blog_category_id' => null,
         'title' => 'New Post Title',
@@ -125,7 +125,7 @@ test('post can be updated', function () {
 });
 
 test('post can be deleted', function () {
-    $response = $this->loggedRequest->delete('/blog-post/' . $this->user->id);
+    $response = $this->loggedRequest->delete('/blog-post/'.$this->user->id);
 
     $response->assertRedirect('/blog-post');
 
