@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-8 mt-6 text-skin-base-content">
-        <h1>Welcome to your Modular Project!</h1>
+    <div class="text-skin-base-content mx-8 mt-6">
+        <h1>Welcome to your Modular Project X!</h1>
     </div>
 </template>
