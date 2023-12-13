@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
 use Inertia\Testing\AssertableInertia as Assert;
 use Modules\Blog\Models\Author;
 use Modules\User\Models\User;
@@ -9,6 +10,12 @@ beforeEach(function () {
     $this->loggedRequest = $this->actingAs($this->user);
 
     $this->author = Author::factory()->create();
+});
+
+afterEach(function () {
+    if ($this->author->image) {
+        Storage::disk('public')->delete('blog/'.$this->author->image);
+    }
 });
 
 test('author list can be rendered', function () {

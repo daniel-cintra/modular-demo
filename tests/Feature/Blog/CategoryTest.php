@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
 use Inertia\Testing\AssertableInertia as Assert;
 use Modules\Blog\Models\Category;
 use Modules\User\Models\User;
@@ -9,6 +10,12 @@ beforeEach(function () {
     $this->loggedRequest = $this->actingAs($this->user);
 
     $this->category = Category::factory()->create();
+});
+
+afterEach(function () {
+    if ($this->category->image) {
+        Storage::disk('public')->delete('blog/'.$this->category->image);
+    }
 });
 
 test('category list can be rendered', function () {
