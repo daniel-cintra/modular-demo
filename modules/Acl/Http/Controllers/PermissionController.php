@@ -2,8 +2,8 @@
 
 namespace Modules\Acl\Http\Controllers;
 
-use Modules\Acl\Http\Requests\PermissionValidate;
 use Modules\Support\Http\Controllers\BackendController;
+use Modules\Acl\Http\Requests\PermissionValidate;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends BackendController
