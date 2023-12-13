@@ -2,6 +2,11 @@ name: Fix PHP code style issues
 
 on:
   push:
+    branches: [main]
+    paths:
+      - '**.php'
+  pull_request:
+    branches: [main]
     paths:
       - '**.php'
 
@@ -12,8 +17,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Fix PHP code style issues
         uses: aglipanci/laravel-pint-action@2.0.0
