@@ -1,7 +1,7 @@
 <?php
 
-use Inertia\Testing\AssertableInertia as Assert;
 use Modules\Blog\Models\Author;
+use Inertia\Testing\AssertableInertia as Assert;
 use Modules\User\Models\User;
 
 beforeEach(function () {
@@ -61,7 +61,7 @@ test('author can be created', function () {
 });
 
 test('author edit page can be rendered', function () {
-    $response = $this->loggedRequest->get('/blog-author/'.$this->author->id.'/edit');
+    $response = $this->loggedRequest->get('/blog-author/' . $this->author->id . '/edit');
 
     $response->assertStatus(200);
 
@@ -84,7 +84,7 @@ test('author edit page can be rendered', function () {
 });
 
 test('author can be updated', function () {
-    $response = $this->loggedRequest->put('/blog-author/'.$this->author->id, [
+    $response = $this->loggedRequest->put('/blog-author/' . $this->author->id, [
         'name' => 'New Name',
         'email' => 'new@email.com',
     ]);
@@ -110,7 +110,7 @@ test('author can be updated', function () {
 });
 
 test('author can be deleted', function () {
-    $response = $this->loggedRequest->delete('/blog-author/'.$this->user->id);
+    $response = $this->loggedRequest->delete('/blog-author/' . $this->user->id);
 
     $response->assertRedirect('/blog-author');
 
