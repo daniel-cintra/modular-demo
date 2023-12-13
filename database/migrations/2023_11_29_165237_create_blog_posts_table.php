@@ -25,8 +25,17 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('blog_author_id')->references('id')->on('blog_authors')->cascadeOnUpdate()->nullOnDelete();
-            $table->foreign('blog_category_id')->references('id')->on('blog_categories')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreign('blog_author_id')
+                ->references('id')
+                ->on('blog_authors')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+
+            $table->foreign('blog_category_id')
+                ->references('id')
+                ->on('blog_categories')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
         });
     }
 
