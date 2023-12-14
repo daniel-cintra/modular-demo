@@ -44,7 +44,7 @@ test('role can be created', function () {
 });
 
 test('role edit can be rendered', function () {
-    $response = $this->loggedRequest->get('/acl-role/' . $this->role->id . '/edit');
+    $response = $this->loggedRequest->get('/acl-role/'.$this->role->id.'/edit');
 
     $response->assertStatus(200);
 
@@ -66,7 +66,7 @@ test('role can be updated', function () {
 
     $role2 = Role::create(['name' => 'content author', 'guard_name' => 'user']);
 
-    $response = $this->loggedRequest->put('/acl-role/' . $role2->id, [
+    $response = $this->loggedRequest->put('/acl-role/'.$role2->id, [
         'name' => 'z Role Name',
     ]);
 
@@ -89,7 +89,7 @@ test('role can be updated', function () {
 test('role can be deleted', function () {
     $role2 = Role::create(['name' => 'content author', 'guard_name' => 'user']);
 
-    $response = $this->loggedRequest->delete('/acl-role/' . $role2->id);
+    $response = $this->loggedRequest->delete('/acl-role/'.$role2->id);
 
     $response->assertRedirect('/acl-role');
 
