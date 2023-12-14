@@ -29,29 +29,45 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         info('Users created.');
 
-        info('Creating blog categories...');
-        $this->seedWithProgress(
-            label: 'Categories creation status',
-            steps: 12,
-            callback: fn () => Category::factory()->create(),
-        );
-        info('Blog categories created.');
+        info('Creating ACL roles...');
+        $this->call(AclRoleSeeder::class);
+        info('ACL roles created.');
 
-        info('Creating blog authors...');
-        $this->seedWithProgress(
-            label: 'Authors creation status',
-            steps: 12,
-            callback: fn () => Author::factory()->create(),
-        );
-        info('Blog authors created.');
+        info('Creating ACL permissions...');
+        $this->call(AclPermissionSeeder::class);
+        info('ACL permissions created.');
 
-        info('Creating blog posts...');
-        $this->seedWithProgress(
-            label: 'Posts creation status',
-            steps: 24,
-            callback: fn () => Post::factory()->create(),
-        );
-        info('Blog posts created.');
+        info('Assigning ACL permissions to roles...');
+        $this->call(AclRoleHasPermissionsSeeder::class);
+        info('ACL permissions assigned to roles.');
+
+        info('Assigning ACL roles to users...');
+        $this->call(AclModelHasRolesSeeder::class);
+        info('ACL roles assigned to users.');
+
+        // info('Creating blog categories...');
+        // $this->seedWithProgress(
+        //     label: 'Categories creation status',
+        //     steps: 12,
+        //     callback: fn () => Category::factory()->create(),
+        // );
+        // info('Blog categories created.');
+
+        // info('Creating blog authors...');
+        // $this->seedWithProgress(
+        //     label: 'Authors creation status',
+        //     steps: 12,
+        //     callback: fn () => Author::factory()->create(),
+        // );
+        // info('Blog authors created.');
+
+        // info('Creating blog posts...');
+        // $this->seedWithProgress(
+        //     label: 'Posts creation status',
+        //     steps: 24,
+        //     callback: fn () => Post::factory()->create(),
+        // );
+        // info('Blog posts created.');
 
         Schema::enableForeignKeyConstraints();
     }

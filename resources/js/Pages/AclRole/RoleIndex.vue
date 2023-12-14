@@ -61,11 +61,7 @@
                         <AppTooltip :text="__('Delete Role')">
                             <AppButton
                                 class="btn btn-icon btn-destructive"
-                                @click="
-                                    confirmDelete(
-                                        route('aclRole.destroy', item.id)
-                                    )
-                                "
+                                @click="validateRoleDeletion(item.id)"
                             >
                                 <i class="ri-delete-bin-line"></i>
                             </AppButton>
@@ -86,6 +82,12 @@
     </AppAlert>
 
     <AppConfirmDialog ref="confirmDialogRef"></AppConfirmDialog>
+
+    <AppToast ref="toastRef">
+        <AppAlert type="error" class="mb-4">
+            It's a demo, please don't delete the root role...
+        </AppAlert>
+    </AppToast>
 </template>
 
 <script setup>
@@ -108,5 +110,15 @@ const headers = ['ID', 'Name', 'Actions']
 const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
+}
+
+const toastRef = ref(null)
+const validateRoleDeletion = (roleId) => {
+    //root role, should not be deleted
+    if (roleId === 1) {
+        toastRef.value.open()
+    } else {
+        confirmDelete(route('aclRole.destroy', roleId))
+    }
 }
 </script>

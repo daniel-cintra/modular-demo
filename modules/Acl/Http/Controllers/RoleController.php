@@ -54,6 +54,12 @@ class RoleController extends BackendController
 
     public function update(RoleValidate $request, $id)
     {
+        //prevent update of the root role
+        if ($id == 1) {
+            return redirect()->route('aclRole.index')
+                ->with('error', 'Role not updated');
+        }
+
         $role = Role::findOrFail($id);
 
         $role->update($request->validated());
@@ -64,6 +70,12 @@ class RoleController extends BackendController
 
     public function destroy($id)
     {
+        //prevent delete of the root user
+        if ($id == 1) {
+            return redirect()->route('aclRole.index')
+                ->with('error', 'Role not deleted');
+        }
+
         Role::findOrFail($id)->delete();
 
         return redirect()->route('aclRole.index')

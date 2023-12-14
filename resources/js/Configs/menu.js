@@ -5,30 +5,30 @@ export default {
     items: [
         {
             label: 'Dashboard',
-            permission: 'Main Menu: Dashboard',
+            permission: 'Dashboard',
             icon: 'ri-dashboard-line',
             link: route('dashboard.index')
         },
 
         {
             label: 'Blog',
-            permission: 'Main Menu: Blog',
+            permission: 'Blog',
             children: [
                 {
                     label: 'Posts',
-                    permission: 'Main Menu: Blog: Posts - List',
+                    permission: 'Blog: Post - List',
                     icon: 'ri-draft-line',
                     link: route('blogPost.index')
                 },
                 {
                     label: 'Categories',
-                    permission: 'Main Menu: Blog: Categories - List',
+                    permission: 'Blog: Category - List',
                     icon: 'ri-folders-line',
                     link: route('blogCategory.index')
                 },
                 {
                     label: 'Authors',
-                    permission: 'Main Menu: Blog: Authors - List',
+                    permission: 'Blog: Author - List',
                     icon: 'ri-team-line',
                     link: route('blogAuthor.index')
                 }
@@ -37,24 +37,23 @@ export default {
 
         {
             label: 'Access Control List',
-            permission: 'Main Menu: Access Control List',
+            permission: 'ACL',
             children: [
                 {
                     label: 'Users',
-                    permission: 'Main Menu: Access Control List: Users - List',
+                    permission: 'Acl: User - List',
                     icon: 'ri-user-line',
                     link: route('user.index')
                 },
                 {
                     label: 'Permissions',
-                    permission:
-                        'Main Menu: Access Control List: Permissions - List',
+                    permission: 'Acl: Permission - List',
                     icon: 'ri-shield-keyhole-line',
                     link: route('aclPermission.index')
                 },
                 {
                     label: 'Roles',
-                    permission: 'Main Menu: Access Control List: Roles - List',
+                    permission: 'Acl: Role - List',
                     icon: 'ri-account-box-line',
                     link: route('aclRole.index')
                 }

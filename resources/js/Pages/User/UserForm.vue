@@ -44,9 +44,17 @@
             </form>
         </template>
         <template #footer>
-            <AppButton class="btn btn-primary" @click="submitForm">
+            <AppButton
+                v-if="user.id !== 1"
+                class="btn btn-primary"
+                @click="submitForm"
+            >
                 {{ __('Save') }}
             </AppButton>
+
+            <AppAlert v-else type="info" class="mb-4">
+                For demo purposes, the example user cannot be edited...
+            </AppAlert>
         </template>
     </AppCard>
 </template>
