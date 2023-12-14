@@ -16,7 +16,7 @@ class AclPermissionSeeder extends Seeder
         foreach ($permissions as $permission) {
             Permission::create([
                 'name' => $permission,
-                'guard_name' => 'user'
+                'guard_name' => 'user',
             ]);
         }
     }

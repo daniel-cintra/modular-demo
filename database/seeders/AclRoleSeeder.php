@@ -18,17 +18,17 @@ class AclRoleSeeder extends Seeder
 
         Role::create([
             'name' => 'root',
-            'guard_name' => 'user'
+            'guard_name' => 'user',
         ]);
 
         Role::create([
             'name' => 'content author',
-            'guard_name' => 'user'
+            'guard_name' => 'user',
         ]);
 
         Role::create([
             'name' => 'content director',
-            'guard_name' => 'user'
+            'guard_name' => 'user',
         ]);
     }
 }

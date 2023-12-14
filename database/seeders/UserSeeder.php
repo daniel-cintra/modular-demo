@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $users = [
             'Root User' => 'root@user.com',
             'Content Author' => 'author@user.com',
-            'Content Director' => 'director@user.com'
+            'Content Director' => 'director@user.com',
         ];
 
         foreach ($users as $userName => $userEmail) {
