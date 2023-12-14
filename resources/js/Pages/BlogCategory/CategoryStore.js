@@ -25,10 +25,8 @@ export const useCategoryStore = defineStore('CategoryStore', {
         },
         initSeoTags() {
             this.category.meta_tag_title = this.category.name.substring(0, 60)
-            this.category.meta_tag_description = this.category.content.replace(
-                /<\/?[^>]+(>|$)/g,
-                ''
-            )
+            this.category.meta_tag_description =
+                this.category.description.replace(/<\/?[^>]+(>|$)/g, '')
         }
     },
 
@@ -52,7 +50,7 @@ export const useCategoryStore = defineStore('CategoryStore', {
 
                 if (
                     state.category.name.length > 1 &&
-                    state.category.content.length > 2
+                    state.category.description.length > 2
                 ) {
                     return false
                 }

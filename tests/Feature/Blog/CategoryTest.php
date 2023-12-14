@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Storage;
 use Inertia\Testing\AssertableInertia as Assert;
 use Modules\Blog\Models\Category;
 use Modules\User\Models\User;
+use Illuminate\Support\Str;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
@@ -32,7 +33,7 @@ test('category list can be rendered', function () {
                 fn (Assert $page) => $page
                     ->where('id', $this->category->id)
                     ->where('image_url', $this->category->image_url)
-                    ->where('name', $this->category->name)
+                    ->where('name', Str::limit($this->category->name, 50)) 
                     ->where('is_visible', $this->category->is_visible)
             )
     );

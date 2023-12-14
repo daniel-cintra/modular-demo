@@ -23,17 +23,17 @@ class AclModelHasRolesSeeder extends Seeder
             'model_id' => 1
         ]);
 
-        //content creator
+        //content author
         DB::table('model_has_roles')->insert([
             'role_id' => 2,
-            'model_type' => 'Modules\User\Models\User',
+            'model_type' => 'user',
             'model_id' => 2
         ]);
 
         //content director
         DB::table('model_has_roles')->insert([
             'role_id' => 3,
-            'model_type' => 'Modules\User\Models\User',
+            'model_type' => 'user',
             'model_id' => 3
         ]);
     }

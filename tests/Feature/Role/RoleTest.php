@@ -44,7 +44,7 @@ test('role can be created', function () {
 });
 
 test('role edit can be rendered', function () {
-    $response = $this->loggedRequest->get('/acl-role/'.$this->role->id.'/edit');
+    $response = $this->loggedRequest->get('/acl-role/' . $this->role->id . '/edit');
 
     $response->assertStatus(200);
 
@@ -63,7 +63,10 @@ test('role edit can be rendered', function () {
 });
 
 test('role can be updated', function () {
-    $response = $this->loggedRequest->put('/acl-role/'.$this->role->id, [
+
+    $role2 = Role::create(['name' => 'content author', 'guard_name' => 'user']);
+
+    $response = $this->loggedRequest->put('/acl-role/' . $role2->id, [
         'name' => 'z Role Name',
     ]);
 
@@ -74,10 +77,9 @@ test('role can be updated', function () {
         fn (Assert $page) => $page
             ->component('AclRole/RoleIndex')
             ->has(
-                'roles.data',
-                1,
+                'roles.data.1',
                 fn (Assert $page) => $page
-                    ->where('id', $this->role->id)
+                    ->where('id', $role2->id)
                     ->where('name', 'z Role Name')
                     ->where('guard_name', $this->role->guard_name)
             )
@@ -85,9 +87,11 @@ test('role can be updated', function () {
 });
 
 test('role can be deleted', function () {
-    $response = $this->loggedRequest->delete('/acl-role/'.$this->role->id);
+    $role2 = Role::create(['name' => 'content author', 'guard_name' => 'user']);
+
+    $response = $this->loggedRequest->delete('/acl-role/' . $role2->id);
 
     $response->assertRedirect('/acl-role');
 
-    $this->assertCount(0, Role::all());
+    $this->assertCount(1, Role::all());
 });

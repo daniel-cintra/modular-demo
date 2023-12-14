@@ -1,10 +1,10 @@
 <?php
 
 use Inertia\Testing\AssertableInertia as Assert;
-use Modules\User\Models\User;
+use Modules\User\Models\User; 
 
 beforeEach(function () {
-    $this->user = User::factory()->create();
+    $this->user = User::factory()->create(['name' => 'Alpha']);
     $this->loggedRequest = $this->actingAs($this->user);
 });
 
@@ -43,7 +43,7 @@ test('user can be created', function () {
 });
 
 test('user edit can be rendered', function () {
-    $response = $this->loggedRequest->get('/user/'.$this->user->id.'/edit');
+    $response = $this->loggedRequest->get('/user/' . $this->user->id . '/edit');
 
     $response->assertStatus(200);
 
@@ -61,7 +61,10 @@ test('user edit can be rendered', function () {
 });
 
 test('user can be updated', function () {
-    $response = $this->loggedRequest->put('/user/'.$this->user->id, [
+
+    $user2 = User::factory()->create(['name' => 'Beta']);
+
+    $response = $this->loggedRequest->put('/user/' . $user2->id, [
         'name' => 'New Name',
         'email' => 'new@email.com',
         'password' => 'password',
@@ -74,21 +77,23 @@ test('user can be updated', function () {
         fn (Assert $page) => $page
             ->component('User/UserIndex')
             ->has(
-                'users.data',
-                1,
+                'users.data.1',
                 fn (Assert $page) => $page
-                    ->where('id', $this->user->id)
+                    ->where('id', $user2->id)
                     ->where('name', 'New Name')
                     ->where('email', 'new@email.com')
-                    ->where('created_at', $this->user->created_at->format('d/m/Y H:i\h'))
+                    ->where('created_at', $user2->created_at->format('d/m/Y H:i\h'))
             )
     );
+
+    $user2->delete();
 });
 
 test('user can be deleted', function () {
-    $response = $this->loggedRequest->delete('/user/'.$this->user->id);
+    $user2 = User::factory()->create();
+    $response = $this->loggedRequest->delete('/user/' . $user2->id);
 
     $response->assertRedirect('/user');
 
-    $this->assertCount(0, User::all());
+    $this->assertCount(1, User::all());
 });
