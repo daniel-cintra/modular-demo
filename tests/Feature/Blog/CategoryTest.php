@@ -19,7 +19,7 @@ beforeEach(function () {
 
 afterEach(function () {
     if ($this->category->image) {
-        Storage::disk('public')->delete('blog/' . $this->category->image);
+        Storage::disk('public')->delete('blog/'.$this->category->image);
     }
 });
 
@@ -71,7 +71,7 @@ test('category can be created', function () {
 });
 
 test('category edit page can be rendered', function () {
-    $response = $this->loggedRequest->get('/blog-category/' . $this->category->id . '/edit');
+    $response = $this->loggedRequest->get('/blog-category/'.$this->category->id.'/edit');
 
     $response->assertStatus(200);
 
@@ -95,7 +95,7 @@ test('category edit page can be rendered', function () {
 });
 
 test('category can be updated', function () {
-    $response = $this->loggedRequest->put('/blog-category/' . $this->category->id, [
+    $response = $this->loggedRequest->put('/blog-category/'.$this->category->id, [
         'name' => 'New Name',
         'is_visible' => true,
     ]);
@@ -119,7 +119,7 @@ test('category can be updated', function () {
 });
 
 test('category can be deleted', function () {
-    $response = $this->loggedRequest->delete('/blog-category/' . $this->user->id);
+    $response = $this->loggedRequest->delete('/blog-category/'.$this->user->id);
 
     $response->assertRedirect('/blog-category');
 

@@ -20,7 +20,7 @@ beforeEach(function () {
 });
 
 test('user permissions can be rendered', function () {
-    $response = $this->loggedRequest->get('/acl-user-permission/' . $this->user->id . '/edit');
+    $response = $this->loggedRequest->get('/acl-user-permission/'.$this->user->id.'/edit');
 
     $response->assertStatus(200);
 
@@ -48,7 +48,7 @@ test('user permissions can be rendered', function () {
 });
 
 test('user permissions can be updated', function () {
-    $response = $this->loggedRequest->put('/acl-user-permission/' . $this->user->id, [
+    $response = $this->loggedRequest->put('/acl-user-permission/'.$this->user->id, [
         'userPermissions' => [$this->permission2->id],
     ]);
 
