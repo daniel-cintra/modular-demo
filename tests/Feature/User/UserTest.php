@@ -2,9 +2,13 @@
 
 use Inertia\Testing\AssertableInertia as Assert;
 use Modules\User\Models\User;
+use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
     $this->user = User::factory()->create(['name' => 'Alpha']);
+    Role::create(['name' => 'root']);
+    $this->user->assignRole('root');
+
     $this->loggedRequest = $this->actingAs($this->user);
 });
 
@@ -43,7 +47,7 @@ test('user can be created', function () {
 });
 
 test('user edit can be rendered', function () {
-    $response = $this->loggedRequest->get('/user/'.$this->user->id.'/edit');
+    $response = $this->loggedRequest->get('/user/' . $this->user->id . '/edit');
 
     $response->assertStatus(200);
 
@@ -64,7 +68,7 @@ test('user can be updated', function () {
 
     $user2 = User::factory()->create(['name' => 'Beta']);
 
-    $response = $this->loggedRequest->put('/user/'.$user2->id, [
+    $response = $this->loggedRequest->put('/user/' . $user2->id, [
         'name' => 'New Name',
         'email' => 'new@email.com',
         'password' => 'password',
@@ -91,7 +95,7 @@ test('user can be updated', function () {
 
 test('user can be deleted', function () {
     $user2 = User::factory()->create();
-    $response = $this->loggedRequest->delete('/user/'.$user2->id);
+    $response = $this->loggedRequest->delete('/user/' . $user2->id);
 
     $response->assertRedirect('/user');
 

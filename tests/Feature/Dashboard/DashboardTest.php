@@ -2,9 +2,13 @@
 
 use Inertia\Testing\AssertableInertia as Assert;
 use Modules\User\Models\User;
+use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
+    Role::create(['name' => 'root']);
+    $this->user->assignRole('root');
+
     $this->loggedRequest = $this->actingAs($this->user);
 });
 

@@ -4,9 +4,13 @@ use Inertia\Testing\AssertableInertia as Assert;
 use Modules\Acl\Services\GetUserPermissions;
 use Modules\User\Models\User;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
+    Role::create(['name' => 'root']);
+    $this->user->assignRole('root');
+
     $this->loggedRequest = $this->actingAs($this->user);
 
     $this->permission = Permission::create(['name' => 'first', 'guard_name' => 'user']);
@@ -16,7 +20,7 @@ beforeEach(function () {
 });
 
 test('user permissions can be rendered', function () {
-    $response = $this->loggedRequest->get('/acl-user-permission/'.$this->user->id.'/edit');
+    $response = $this->loggedRequest->get('/acl-user-permission/' . $this->user->id . '/edit');
 
     $response->assertStatus(200);
 
@@ -44,7 +48,7 @@ test('user permissions can be rendered', function () {
 });
 
 test('user permissions can be updated', function () {
-    $response = $this->loggedRequest->put('/acl-user-permission/'.$this->user->id, [
+    $response = $this->loggedRequest->put('/acl-user-permission/' . $this->user->id, [
         'userPermissions' => [$this->permission2->id],
     ]);
 

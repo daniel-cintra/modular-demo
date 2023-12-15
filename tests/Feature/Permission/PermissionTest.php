@@ -3,9 +3,13 @@
 use Inertia\Testing\AssertableInertia as Assert;
 use Modules\User\Models\User;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
+    Role::create(['name' => 'root']);
+    $this->user->assignRole('root');
+
     $this->loggedRequest = $this->actingAs($this->user);
 
     $this->permission = Permission::create(['name' => 'first']);
@@ -43,7 +47,7 @@ test('permission can be created', function () {
 });
 
 test('permission edit can be rendered', function () {
-    $response = $this->loggedRequest->get('/acl-permission/'.$this->permission->id.'/edit');
+    $response = $this->loggedRequest->get('/acl-permission/' . $this->permission->id . '/edit');
 
     $response->assertStatus(200);
 
@@ -63,7 +67,7 @@ test('permission edit can be rendered', function () {
 });
 
 test('permission can be updated', function () {
-    $response = $this->loggedRequest->put('/acl-permission/'.$this->permission->id, [
+    $response = $this->loggedRequest->put('/acl-permission/' . $this->permission->id, [
         'name' => 'z Permission Name',
     ]);
 
@@ -85,7 +89,7 @@ test('permission can be updated', function () {
 });
 
 test('permission can be deleted', function () {
-    $response = $this->loggedRequest->delete('/acl-permission/'.$this->permission->id);
+    $response = $this->loggedRequest->delete('/acl-permission/' . $this->permission->id);
 
     $response->assertRedirect('/acl-permission');
 
