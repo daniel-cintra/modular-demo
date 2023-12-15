@@ -45,29 +45,29 @@ class DatabaseSeeder extends Seeder
         $this->call(AclModelHasRolesSeeder::class);
         info('ACL roles assigned to users.');
 
-        // info('Creating blog categories...');
-        // $this->seedWithProgress(
-        //     label: 'Categories creation status',
-        //     steps: 12,
-        //     callback: fn () => Category::factory()->create(),
-        // );
-        // info('Blog categories created.');
+        info('Creating blog categories...');
+        $this->seedWithProgress(
+            label: 'Categories creation status',
+            steps: 12,
+            callback: fn () => Category::factory()->create(),
+        );
+        info('Blog categories created.');
 
-        // info('Creating blog authors...');
-        // $this->seedWithProgress(
-        //     label: 'Authors creation status',
-        //     steps: 12,
-        //     callback: fn () => Author::factory()->create(),
-        // );
-        // info('Blog authors created.');
+        info('Creating blog authors...');
+        $this->seedWithProgress(
+            label: 'Authors creation status',
+            steps: 12,
+            callback: fn () => Author::factory()->create(),
+        );
+        info('Blog authors created.');
 
-        // info('Creating blog posts...');
-        // $this->seedWithProgress(
-        //     label: 'Posts creation status',
-        //     steps: 24,
-        //     callback: fn () => Post::factory()->create(),
-        // );
-        // info('Blog posts created.');
+        info('Creating blog posts...');
+        $this->seedWithProgress(
+            label: 'Posts creation status',
+            steps: 24,
+            callback: fn () => Post::factory()->create(),
+        );
+        info('Blog posts created.');
 
         Schema::enableForeignKeyConstraints();
     }
