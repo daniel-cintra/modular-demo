@@ -21,7 +21,7 @@ class AclServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/config/config.php', 'acl');
+        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'acl');
 
         Gate::before(function ($user, $ability) {
             return $user->hasRole('root') ? true : null; //must be null, not false (from Spatie permission package docs)
