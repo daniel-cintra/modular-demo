@@ -4,7 +4,7 @@
         v-model="postStore.post.blog_category_id"
         :options="categories"
         combo-label="Select a Category"
-        class="w-full"
+        class="w-64 xl:w-full"
     />
 </template>
 

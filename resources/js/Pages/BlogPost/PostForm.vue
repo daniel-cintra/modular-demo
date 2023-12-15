@@ -2,8 +2,8 @@
     <AppSectionHeader title="Blogs" :bread-crumb="breadCrumb">
     </AppSectionHeader>
 
-    <div class="flex">
-        <AppCard class="w-full md:w-3/4 xl:w-1/2">
+    <div class="flex flex-col xl:flex-row">
+        <AppCard class="w-full xl:w-8/12">
             <template #title> {{ title }} </template>
             <template #content>
                 <AppFormErrors class="mb-4" />
@@ -15,14 +15,9 @@
                     <PostSeo />
                 </form>
             </template>
-            <template #footer>
-                <AppButton class="btn btn-primary" @click="submitForm">
-                    Save
-                </AppButton>
-            </template>
         </AppCard>
 
-        <AppCard class="ml-5 md:w-1/4">
+        <AppCard class="w-full xl:ml-5 xl:w-4/12">
             <template #title> Post Info </template>
             <template #content>
                 <PostPublishDate />
@@ -33,6 +28,10 @@
             </template>
         </AppCard>
     </div>
+
+    <AppButton class="btn btn-primary mt-5" @click="submitForm">
+        Save
+    </AppButton>
 </template>
 
 <script setup>

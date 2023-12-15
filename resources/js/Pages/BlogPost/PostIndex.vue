@@ -2,6 +2,7 @@
     <AppSectionHeader title="Posts" :bread-crumb="breadCrumb">
         <template #right>
             <AppButton
+                v-if="can('Blog: Post - Create')"
                 class="btn btn-primary"
                 @click="$inertia.visit(route('blogPost.create'))"
             >
@@ -47,6 +48,7 @@
                         <!-- edit post -->
                         <AppTooltip text="Edit Post" class="mr-3">
                             <AppButton
+                                v-if="can('Blog: Post - Edit')"
                                 class="btn btn-icon btn-primary"
                                 @click="
                                     $inertia.visit(
@@ -61,6 +63,7 @@
                         <!-- delete post -->
                         <AppTooltip text="Delete Post">
                             <AppButton
+                                v-if="can('Blog: Post - Delete')"
                                 class="btn btn-icon btn-destructive"
                                 @click="
                                     confirmDelete(
@@ -91,6 +94,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import useAuthCan from '@/Composables/useAuthCan'
 
 const props = defineProps({
     posts: {
@@ -114,6 +118,8 @@ const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
 }
+
+const { can } = useAuthCan()
 </script>
 
 <style scoped>

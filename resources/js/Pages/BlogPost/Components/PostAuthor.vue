@@ -4,7 +4,7 @@
         v-model="postStore.post.blog_author_id"
         :options="authors"
         combo-label="Select an Author"
-        class="w-full"
+        class="w-64 xl:w-full"
     />
 </template>
 
