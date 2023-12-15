@@ -2,6 +2,7 @@
     <AppSectionHeader title="Categories" :bread-crumb="breadCrumb">
         <template #right>
             <AppButton
+                v-if="can('Blog: Category - Create')"
                 class="btn btn-primary"
                 @click="$inertia.visit(route('blogCategory.create'))"
             >
@@ -45,7 +46,11 @@
 
                     <AppDataTableData>
                         <!-- edit category -->
-                        <AppTooltip text="Edit Category" class="mr-3">
+                        <AppTooltip
+                            v-if="can('Blog: Category - Edit')"
+                            text="Edit Category"
+                            class="mr-3"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
@@ -59,7 +64,10 @@
                         </AppTooltip>
 
                         <!-- delete category -->
-                        <AppTooltip text="Delete Category">
+                        <AppTooltip
+                            v-if="can('Blog: Category - Delete')"
+                            text="Delete Category"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-destructive"
                                 @click="
@@ -92,6 +100,7 @@
 <script setup>
 import AppImageNotAvailable from '@/Components/Misc/AppImageNotAvailable.vue'
 import { ref } from 'vue'
+import useAuthCan from '@/Composables/useAuthCan'
 
 const props = defineProps({
     categories: {
@@ -115,6 +124,8 @@ const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
 }
+
+const { can } = useAuthCan()
 </script>
 
 <style scoped>

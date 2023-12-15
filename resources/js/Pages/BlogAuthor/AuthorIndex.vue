@@ -2,6 +2,7 @@
     <AppSectionHeader title="Authors" :bread-crumb="breadCrumb">
         <template #right>
             <AppButton
+                v-if="can('Blog: Author - Create')"
                 class="btn btn-primary"
                 @click="$inertia.visit(route('blogAuthor.create'))"
             >
@@ -48,7 +49,11 @@
 
                     <AppDataTableData>
                         <!-- edit author -->
-                        <AppTooltip text="Edit Author" class="mr-3">
+                        <AppTooltip
+                            v-if="can('Blog: Author - Edit')"
+                            text="Edit Author"
+                            class="mr-3"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
@@ -62,7 +67,10 @@
                         </AppTooltip>
 
                         <!-- delete author -->
-                        <AppTooltip text="Delete Author">
+                        <AppTooltip
+                            v-if="can('Blog: Author - Delete')"
+                            text="Delete Author"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-destructive"
                                 @click="
@@ -94,6 +102,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import useAuthCan from '@/Composables/useAuthCan'
 
 const props = defineProps({
     authors: {
@@ -113,4 +122,6 @@ const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {
     confirmDialogRef.value.openModal(deleteRoute)
 }
+
+const { can } = useAuthCan()
 </script>

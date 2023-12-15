@@ -22,7 +22,7 @@
         </template>
         <template #footer>
             <AppButton
-                v-if="role.id !== 1"
+                v-if="!role || role.id !== 1"
                 class="btn btn-primary"
                 @click="submitForm"
             >

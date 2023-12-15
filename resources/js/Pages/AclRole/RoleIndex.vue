@@ -2,6 +2,7 @@
     <AppSectionHeader :title="__('Roles')" :bread-crumb="breadCrumb">
         <template #right>
             <AppButton
+                v-if="can('ACL: Role - Create')"
                 class="btn btn-primary"
                 @click="$inertia.visit(route('aclRole.create'))"
             >
@@ -30,7 +31,11 @@
 
                     <AppDataTableData>
                         <!-- role permissions -->
-                        <AppTooltip :text="__('Role Permissions')" class="mr-3">
+                        <AppTooltip
+                            v-if="can('Acl: Role - Manage Permissions')"
+                            :text="__('Role Permissions')"
+                            class="mr-3"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
@@ -44,7 +49,11 @@
                         </AppTooltip>
 
                         <!-- edit role -->
-                        <AppTooltip :text="__('Edit Role')" class="mr-3">
+                        <AppTooltip
+                            v-if="can('ACL: Role - Edit')"
+                            :text="__('Edit Role')"
+                            class="mr-3"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
@@ -58,7 +67,10 @@
                         </AppTooltip>
 
                         <!-- delete role -->
-                        <AppTooltip :text="__('Delete Role')">
+                        <AppTooltip
+                            v-if="can('ACL: Role - Delete')"
+                            :text="__('Delete Role')"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-destructive"
                                 @click="validateRoleDeletion(item.id)"
@@ -92,6 +104,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import useAuthCan from '@/Composables/useAuthCan'
 
 const props = defineProps({
     roles: {
@@ -121,4 +134,6 @@ const validateRoleDeletion = (roleId) => {
         confirmDelete(route('aclRole.destroy', roleId))
     }
 }
+
+const { can } = useAuthCan()
 </script>

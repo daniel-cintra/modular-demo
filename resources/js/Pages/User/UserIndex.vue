@@ -2,6 +2,7 @@
     <AppSectionHeader :title="__('Users')" :bread-crumb="breadCrumb">
         <template #right>
             <AppButton
+                v-if="can('Acl: User - Create')"
                 class="btn btn-primary"
                 @click="$inertia.visit(route('user.create'))"
             >
@@ -34,7 +35,11 @@
 
                     <AppDataTableData>
                         <!-- edit user roles -->
-                        <AppTooltip :text="__('User Roles')" class="mr-3">
+                        <AppTooltip
+                            v-if="can('Acl: User - Manage Roles')"
+                            :text="__('User Roles')"
+                            class="mr-3"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
@@ -48,7 +53,11 @@
                         </AppTooltip>
 
                         <!-- edit user permissions -->
-                        <AppTooltip :text="__('User Permissions')" class="mr-3">
+                        <AppTooltip
+                            v-if="can('Acl: User - Manage Permissions')"
+                            :text="__('User Permissions')"
+                            class="mr-3"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
@@ -62,7 +71,11 @@
                         </AppTooltip>
 
                         <!-- edit user -->
-                        <AppTooltip :text="__('Edit User')" class="mr-3">
+                        <AppTooltip
+                            v-if="can('Acl: User - Edit')"
+                            :text="__('Edit User')"
+                            class="mr-3"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-primary"
                                 @click="
@@ -74,7 +87,10 @@
                         </AppTooltip>
 
                         <!-- delete user -->
-                        <AppTooltip :text="__('Delete User')">
+                        <AppTooltip
+                            v-if="can('Acl: User - Delete')"
+                            :text="__('Delete User')"
+                        >
                             <AppButton
                                 class="btn btn-icon btn-destructive"
                                 @click="validateUserDeletion(item.id)"
@@ -108,6 +124,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import useAuthCan from '@/Composables/useAuthCan'
 
 const props = defineProps({
     users: {
@@ -137,4 +154,6 @@ const validateUserDeletion = (userId) => {
         confirmDelete(route('user.destroy', userId))
     }
 }
+
+const { can } = useAuthCan()
 </script>

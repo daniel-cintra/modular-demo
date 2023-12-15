@@ -46,9 +46,12 @@
 
                     <AppDataTableData>
                         <!-- edit post -->
-                        <AppTooltip text="Edit Post" class="mr-3">
+                        <AppTooltip
+                            v-if="can('Blog: Post - Edit')"
+                            text="Edit Post"
+                            class="mr-3"
+                        >
                             <AppButton
-                                v-if="can('Blog: Post - Edit')"
                                 class="btn btn-icon btn-primary"
                                 @click="
                                     $inertia.visit(
@@ -61,9 +64,11 @@
                         </AppTooltip>
 
                         <!-- delete post -->
-                        <AppTooltip text="Delete Post">
+                        <AppTooltip
+                            v-if="can('Blog: Post - Delete')"
+                            text="Delete Post"
+                        >
                             <AppButton
-                                v-if="can('Blog: Post - Delete')"
                                 class="btn btn-icon btn-destructive"
                                 @click="
                                     confirmDelete(

@@ -45,7 +45,7 @@
         </template>
         <template #footer>
             <AppButton
-                v-if="user.id !== 1"
+                v-if="!user || user.id !== 1"
                 class="btn btn-primary"
                 @click="submitForm"
             >
