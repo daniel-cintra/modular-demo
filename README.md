@@ -1,6 +1,10 @@
+# Modular Demo App
+
+A demo application to illustrate some concepts of a Modular App.
+
 <p align="center" style="margin: 24px;">
     <a href="https://docs.ismodular.com" target="_blank">
-    <img src="art/modular-demo-github.png" alt="Modular Demo App" style="width: 100%; max-width: 800px;"></a>
+    <img src="art/modular-demo-screen-black.jpg" alt="Modular Demo App" style="width: 100%; max-width: 800px;"></a>
 </p>
 
 <center>
