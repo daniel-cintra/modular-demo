@@ -40,10 +40,19 @@
             </AppAlert>
         </template>
 
-        <template v-if="chunks.length" #footer>
-            <AppButton class="btn btn-primary" @click="submitForm">
+        <template #footer>
+            <AppButton
+                v-if="role.id && role.id !== 1 && chunks.length"
+                class="btn btn-primary"
+                @click="submitForm"
+            >
                 {{ __('Save') }}
             </AppButton>
+
+            <AppAlert v-else type="info" class="mb-4">
+                The 'root' role will always have all permissions associated and
+                cannot be changed. There is no need to manually update them.
+            </AppAlert>
         </template>
     </AppCard>
 </template>

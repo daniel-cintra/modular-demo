@@ -22,10 +22,6 @@
             <tbody>
                 <AppDataTableRow v-for="item in users.data" :key="item.id">
                     <AppDataTableData>
-                        {{ item.id }}
-                    </AppDataTableData>
-
-                    <AppDataTableData>
                         {{ item.name }}
                     </AppDataTableData>
 
@@ -138,7 +134,7 @@ const breadCrumb = [
     { label: 'Users', last: true }
 ]
 
-const headers = ['ID', 'Name', 'Email', 'Actions']
+const headers = ['Name', 'Email', 'Actions']
 
 const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {

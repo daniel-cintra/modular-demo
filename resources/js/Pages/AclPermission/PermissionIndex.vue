@@ -25,10 +25,6 @@
                     :key="item.id"
                 >
                     <AppDataTableData>
-                        {{ item.id }}
-                    </AppDataTableData>
-
-                    <AppDataTableData>
                         {{ item.name }}
                     </AppDataTableData>
 
@@ -101,7 +97,7 @@ const breadCrumb = [
     { label: 'Permissions', last: true }
 ]
 
-const headers = ['ID', 'Name', 'Actions']
+const headers = ['Name', 'Actions']
 
 const confirmDialogRef = ref(null)
 const confirmDelete = (deleteRoute) => {

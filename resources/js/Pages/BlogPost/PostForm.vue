@@ -17,7 +17,7 @@
             </template>
         </AppCard>
 
-        <AppCard class="w-full xl:ml-5 xl:w-4/12">
+        <AppCard class="mt-4 w-full xl:ml-5 xl:mt-0 xl:w-4/12">
             <template #title> Post Info </template>
             <template #content>
                 <PostPublishDate />
@@ -29,7 +29,7 @@
         </AppCard>
     </div>
 
-    <AppButton class="btn btn-primary mt-5" @click="submitForm">
+    <AppButton class="btn btn-primary mt-6" @click="submitForm">
         Save
     </AppButton>
 </template>
