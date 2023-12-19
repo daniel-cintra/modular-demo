@@ -37,7 +37,7 @@ class Category extends BaseModel
     public function getImageUrlAttribute(): ?string
     {
         if ($this->image) {
-            return asset("blog/{$this->image}");
+            return asset("storage/blog/{$this->image}");
         }
 
         return null;
