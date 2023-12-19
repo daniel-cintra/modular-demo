@@ -22,7 +22,7 @@ A demo application to illustrate some concepts of a Modular App.
 Clone the repo locally:
 
 ```sh
-git clone git@github.com:daniel-cintra/modular-demo.git modular-demo && cd modular-demo
+git clone https://github.com/daniel-cintra/modular-demo.git modular-demo && cd modular-demo
 ```
 
 Install PHP dependencies:
