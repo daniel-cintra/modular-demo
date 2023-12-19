@@ -108,3 +108,11 @@ Access the application (in your browser) at the address given by the `php artisa
 -   A possible way to organize the file structure of a Modular Project.
 -   Smooth transitions between pages.
 -   The GitHub repository for this demo app includes examples of workflows to standardize the styles of the PHP files using Laravel Pint, and the Vue and JavaScript files using Prettier. There is also a workflow to handle tests. Feel free to check it out!
+
+## Documentation
+
+You can find the Modular full documentation at [https://docs.ismodular.com](https://docs.ismodular.com).
+
+## License
+
+The Modular Project is open-source software licensed under the [MIT license](LICENSE.md).
