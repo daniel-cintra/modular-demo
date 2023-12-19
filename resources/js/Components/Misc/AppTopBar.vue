@@ -16,7 +16,7 @@
         <div class="flex items-center">
             <a
                 class="z-0 inline-block h-10 w-10 rounded-md py-2.5 text-center text-sm font-medium transition-colors hover:bg-skin-neutral-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                href="https://docs.ismodular.com"
+                href="https://github.com/daniel-cintra/modular-demo"
                 target="_blank"
             >
                 <i class="ri-github-fill"></i>
