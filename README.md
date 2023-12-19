@@ -84,6 +84,22 @@ You're ready to go! Visit the url in your browser, and login with:
 -   **Username:** root@user.com
 -   **Password:** password
 
+## Hot Reloading
+
+If you want to use hot reloading, to see the changes in the browser without having to refresh the page, run the following command (instead of `npm run build`):
+
+```sh
+npm run dev
+```
+
+And run the following command in a separate terminal window:
+
+```sh
+php artisan serve
+```
+
+Access the application (in your browser) at the address given by the `php artisan serve` command.
+
 ## The Demo App will provide you with examples of:
 
 -   The ACL (Access Control List) System.
