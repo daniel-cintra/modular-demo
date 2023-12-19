@@ -47,7 +47,7 @@
                 <i class="ri-check-line"></i>
                 The
                 <a
-                    href="#"
+                    href="https://github.com/daniel-cintra/modular-demo"
                     target="_blank"
                     class="text-skin-primary-9 hover:text-skin-primary-10"
                 >
