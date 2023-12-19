@@ -1,4 +1,3 @@
-import AppAlert from '@/Components/Message/AppAlert.vue';
 <template>
     <div class="text-skin-base-content mx-8 mt-4">
         <h1 class="py-6 text-2xl">Welcome to the Modular Demo App!</h1>
