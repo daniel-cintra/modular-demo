@@ -43,7 +43,7 @@ Generate application key:
 php artisan key:generate
 ```
 
-Configure the database settings in you `.env` file. If you want to use SQLite, create the database file:
+Configure the database settings in your .env file according to your choice of database (MySQL, PostgreSQL, SQLite, etc.). If you want to use SQLite, create the database file:
 
 ```sh
 touch database/database.sqlite
