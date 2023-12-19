@@ -22,7 +22,7 @@ A demo application to illustrate some concepts of a Modular App.
 Clone the repo locally:
 
 ```sh
-git clone https://github.com/daniel-cintra/modular-demo.git modular-demo && cd modular-demo
+git clone git@github.com:daniel-cintra/modular-demo.git modular-demo && cd modular-demo
 ```
 
 Install PHP dependencies:
@@ -59,6 +59,18 @@ Create a symlink to the storage:
 
 ```sh
 php artisan storage:link
+```
+
+Install NPM dependencies:
+
+```sh
+npm install
+```
+
+Build the assets:
+
+```sh
+npm run build
 ```
 
 Run the dev server (the output will give the address):
