@@ -109,9 +109,13 @@ Access the application (in your browser) at the address given by the `php artisa
 -   Smooth transitions between pages.
 -   The GitHub repository for this demo app includes examples of workflows to standardize the styles of the PHP files using Laravel Pint, and the Vue and JavaScript files using Prettier. There is also a workflow to handle tests. Feel free to check it out!
 
-## Documentation
+## Visit the Demo App
 
-You can find the Modular full documentation at [https://docs.ismodular.com](https://docs.ismodular.com).
+You can visit the demo app at [https://demo.ismodular.com](https://demo.ismodular.com).
+
+## Modular Documentation
+
+You can find the full Modular documentation at [https://docs.ismodular.com](https://docs.ismodular.com).
 
 ## License
 
