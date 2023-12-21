@@ -40,6 +40,13 @@
                 </AppButton>
             </template>
         </AppCard>
+
+        <AppToast ref="toastRef">
+            <AppAlert type="warning" class="mb-4">
+                The Demo App version will not send the email to reset
+                passwords...
+            </AppAlert>
+        </AppToast>
     </AppAuthShell>
 </template>
 
@@ -52,6 +59,7 @@ export default {
 </script>
 
 <script setup>
+import { ref } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import useFormErrors from '@/Composables/useFormErrors'
 
@@ -59,8 +67,12 @@ const form = useForm({
     email: ''
 })
 
+const toastRef = ref(null)
+
 function submitForm() {
-    form.post(route('adminAuth.sendResetLinkEmail'))
+    toastRef.value.close()
+    toastRef.value.open()
+    // form.post(route('adminAuth.sendResetLinkEmail'))
 }
 
 const { errorsFields } = useFormErrors()
