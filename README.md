@@ -79,10 +79,7 @@ Run the dev server (the output will give the address):
 php artisan serve
 ```
 
-You're ready to go! Visit the url in your browser, and login with:
-
--   **Username:** root@user.com
--   **Password:** password
+You're ready to go! Simply visit the URL in your browser; the login form will appear with the fields automatically filled in.
 
 ## Hot Reloading
 

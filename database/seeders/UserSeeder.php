@@ -19,9 +19,9 @@ class UserSeeder extends Seeder
     private function createTestUsers(): void
     {
         $users = [
-            'Root User' => 'root@user.com',
-            'Content Author' => 'author@user.com',
-            'Content Director' => 'director@user.com',
+            'Root User' => 'root@ismodular.com',
+            'Content Author' => 'author@ismodular.com',
+            'Content Director' => 'director@ismodular.com',
         ];
 
         foreach ($users as $userName => $userEmail) {
