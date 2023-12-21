@@ -280,6 +280,7 @@
 
         <textarea
             v-show="codeMode"
+            :id="editorId"
             v-model="htmlContent"
             class="min-h-[240px] w-full rounded-b-md border border-solid border-skin-neutral-7 bg-skin-neutral-1 font-sans text-xs leading-5 tracking-normal"
             @input="syncEditor"
@@ -310,6 +311,10 @@ const props = defineProps({
         type: String,
         default: ''
     },
+    editorId: {
+        type: String,
+        default: ''
+    },
     editorClass: {
         type: String,
         default: ''
@@ -323,6 +328,10 @@ const props = defineProps({
         default: 'image/*'
     }
 })
+
+const getEditorInstanceName = () => {
+    return 'editor-' + Math.random().toString(36).substring(2, 7) // Generates a random 5-character string
+}
 
 const codeMode = ref(false)
 const htmlContent = ref('')

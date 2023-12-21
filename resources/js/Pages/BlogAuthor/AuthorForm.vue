@@ -16,6 +16,7 @@
                         :class="{
                             'input-error': errorsFields.includes('name')
                         }"
+                        autocomplete="off"
                     />
                 </div>
 
@@ -23,6 +24,7 @@
                     <AppLabel for="bio">Bio</AppLabel>
                     <AppTipTapEditor
                         v-model="form.bio"
+                        editor-id="bio"
                         :class="{
                             'app-tip-tap-error': errorsFields.includes('bio')
                         }"
@@ -46,6 +48,7 @@
                         :class="{
                             'input-error': errorsFields.includes('email')
                         }"
+                        autocomplete="off"
                     />
                 </div>
 

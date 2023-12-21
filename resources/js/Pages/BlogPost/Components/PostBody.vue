@@ -15,6 +15,7 @@
         <AppLabel for="notes">Content</AppLabel>
         <AppTipTapEditor
             v-model="postStore.post.content"
+            editor-id="notes"
             :class="{
                 'app-tip-tap-error': errorsFields.includes('content')
             }"

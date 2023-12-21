@@ -1,5 +1,5 @@
 <template>
-    <AppLabel class="mb-1 mt-5">Author</AppLabel>
+    <p class="mb-1 mt-5">Author</p>
     <AppCombobox
         v-model="postStore.post.blog_author_id"
         :options="authors"

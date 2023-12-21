@@ -8,13 +8,15 @@
             :class="{
                 'input-error': errorsFields.includes('name')
             }"
+            autocomplete="off"
         />
     </div>
 
     <div class="mt-5">
-        <AppLabel for="notes">Description</AppLabel>
+        <AppLabel for="description">Description</AppLabel>
         <AppTipTapEditor
             v-model="categoryStore.category.description"
+            editor-id="description"
             :class="{
                 'app-tip-tap-error': errorsFields.includes('description')
             }"

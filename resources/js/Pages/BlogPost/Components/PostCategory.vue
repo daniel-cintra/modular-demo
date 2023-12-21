@@ -1,5 +1,5 @@
 <template>
-    <AppLabel class="mb-1 mt-5">Category</AppLabel>
+    <p class="mb-1 mt-5">Category</p>
     <AppCombobox
         v-model="postStore.post.blog_category_id"
         :options="categories"
