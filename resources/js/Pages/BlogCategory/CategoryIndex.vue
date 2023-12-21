@@ -25,7 +25,7 @@
                         <img
                             v-if="item.image_url"
                             :src="item.image_url"
-                            class="ml-3 h-6 w-24 rounded"
+                            class="h-6 w-24 rounded"
                         />
 
                         <AppImageNotAvailable v-else />
