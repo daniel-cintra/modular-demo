@@ -54,10 +54,11 @@
                     GitHub repository <i class="ri-external-link-line"></i>
                 </a>
 
-                for this demo app includes examples of workflows to standardize
-                the styles of the PHP files using Laravel Pint, and the Vue and
-                JavaScript files using Prettier. There is also a workflow to
-                handle tests. Feel free to check it out!
+                for this demo app includes examples of workflows (GitHub
+                Actions) to standardize the styles of the PHP files using
+                Laravel Pint, and the Vue and JavaScript files using Prettier.
+                There is also a workflow to handle tests. Feel free to check it
+                out!
             </li>
         </ul>
     </div>
