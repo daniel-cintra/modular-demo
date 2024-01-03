@@ -28,7 +28,7 @@
                             class="h-6 w-24 rounded"
                         />
 
-                        <AppImageNotAvailable v-else />
+                        <AppImageNotAvailable v-else class="!h-6 !w-24" />
                     </AppDataTableData>
 
                     <AppDataTableData>

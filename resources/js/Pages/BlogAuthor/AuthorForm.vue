@@ -35,7 +35,6 @@
                     <AppInputFile
                         v-model="form.image"
                         :image-preview-url="getImagePreviewURL()"
-                        @remove-file="form.remove_previous_image = true"
                     ></AppInputFile>
                 </div>
 
@@ -121,8 +120,7 @@ const form = useForm({
 
     image: null,
 
-    image_url: props.author ? props.author.image_url : null,
-    remove_previous_image: false
+    image_url: props.author ? props.author.image_url : null
 })
 
 const getImagePreviewURL = () => {

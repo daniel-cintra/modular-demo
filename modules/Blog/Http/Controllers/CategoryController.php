@@ -68,14 +68,8 @@ class CategoryController extends BackendController
 
         $categoryData = $request->validated();
 
-        if ($request->input('remove_previous_image')) {
-            $categoryData = array_merge($categoryData, ['image' => null]);
-        }
-
         if ($request->hasFile('image')) {
             $categoryData = array_merge($categoryData, $this->uploadFile('image', 'blog', 'originalUUID', 'public'));
-        } else {
-            unset($categoryData['image']);
         }
 
         $category->update($categoryData);

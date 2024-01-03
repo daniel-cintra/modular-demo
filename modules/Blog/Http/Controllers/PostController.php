@@ -69,18 +69,13 @@ class PostController extends BackendController
 
     public function update(PostValidate $request, int $id): RedirectResponse
     {
+
         $post = Post::findOrFail($id);
 
         $postData = $request->validated();
 
-        if ($request->input('remove_previous_image')) {
-            $postData = array_merge($postData, ['image' => null]);
-        }
-
         if ($request->hasFile('image')) {
             $postData = array_merge($postData, $this->uploadFile('image', 'blog', 'originalUUID', 'public'));
-        } else {
-            unset($postData['image']);
         }
 
         $post->update($postData);

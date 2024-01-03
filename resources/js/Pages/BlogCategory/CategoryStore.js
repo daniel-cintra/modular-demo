@@ -12,9 +12,7 @@ export const useCategoryStore = defineStore('CategoryStore', {
                 is_visible: false,
 
                 meta_tag_title: '',
-                meta_tag_description: '',
-
-                remove_previous_image: false
+                meta_tag_description: ''
             }
         }
     },

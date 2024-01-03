@@ -68,14 +68,8 @@ class AuthorController extends BackendController
 
         $authorData = $request->validated();
 
-        if ($request->input('remove_previous_image')) {
-            $authorData = array_merge($authorData, ['image' => null]);
-        }
-
         if ($request->hasFile('image')) {
             $authorData = array_merge($authorData, $this->uploadFile('image', 'blog', 'originalUUID', 'public'));
-        } else {
-            unset($authorData['image']);
         }
 
         $author->update($authorData);
