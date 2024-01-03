@@ -3,6 +3,7 @@
         <AppInputFile
             v-model="categoryStore.category.image"
             :image-preview-url="getImagePreviewURL()"
+            @remove-file="categoryStore.category.remove_previous_image = true"
         ></AppInputFile>
     </div>
 </template>

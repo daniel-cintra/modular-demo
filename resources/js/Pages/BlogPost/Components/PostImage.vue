@@ -3,6 +3,7 @@
         <AppInputFile
             v-model="postStore.post.image"
             :image-preview-url="getImagePreviewURL()"
+            @remove-file="postStore.post.remove_previous_image = true"
         ></AppInputFile>
     </div>
 </template>

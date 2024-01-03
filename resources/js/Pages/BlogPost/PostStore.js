@@ -15,7 +15,9 @@ export const usePostStore = defineStore('PostStore', {
                 meta_tag_title: '',
                 meta_tag_description: '',
 
-                published_at: ''
+                published_at: '',
+
+                remove_previous_image: false
             }
         }
     },
