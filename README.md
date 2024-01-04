@@ -17,6 +17,19 @@ A demo application to illustrate some concepts of a Modular App.
 
 </center>
 
+## The Demo App will provide you with examples of:
+
+-   The ACL (Access Control List) System.
+-   Some of the Custom Vue 3 Components, provided by Modular (Templates, Sidebar, Data Table, Form Components, Integrated Text Editor, Flash Messages, etc).
+-   How Laravel, Vue and Inertia.js communicate with each other.
+-   A possible way to organize the file structure of a Modular Project.
+-   Smooth transitions between pages.
+-   The GitHub repository for this demo app includes examples of workflows (GitHub Actions) to standardize the styles of the PHP files using Laravel Pint, and the Vue and JavaScript files using Prettier. There is also a workflow to handle tests. Feel free to check it out!
+
+## Visit the Demo App
+
+You can visit the demo app at [https://demo.ismodular.com](https://demo.ismodular.com).
+
 ## Installation
 
 Clone the repo locally:
@@ -97,18 +110,13 @@ php artisan serve
 
 Access the application (in your browser) at the address given by the `php artisan serve` command.
 
-## The Demo App will provide you with examples of:
+## Tests
 
--   The ACL (Access Control List) System.
--   Some of the Custom Vue 3 Components, provided by Modular (Templates, Sidebar, Data Table, Form Components, Integrated Text Editor, Flash Messages, etc).
--   How Laravel, Vue and Inertia.js communicate with each other.
--   A possible way to organize the file structure of a Modular Project.
--   Smooth transitions between pages.
--   The GitHub repository for this demo app includes examples of workflows to standardize the styles of the PHP files using Laravel Pint, and the Vue and JavaScript files using Prettier. There is also a workflow to handle tests. Feel free to check it out!
+The tests provided by this Demo Application can be found in the `tests/Feature` directory. After installing the application, you can run the tests executing the following command from the project root directory in the terminal:
 
-## Visit the Demo App
-
-You can visit the demo app at [https://demo.ismodular.com](https://demo.ismodular.com).
+```sh
+php artisan test
+```
 
 ## Modular Documentation
 
