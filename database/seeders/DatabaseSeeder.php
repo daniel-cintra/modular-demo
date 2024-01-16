@@ -5,9 +5,14 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use Modules\Acl\Database\Seeders\AclModelHasRolesSeeder;
+use Modules\Acl\Database\Seeders\AclPermissionSeeder;
+use Modules\Acl\Database\Seeders\AclRoleHasPermissionsSeeder;
+use Modules\Acl\Database\Seeders\AclRoleSeeder;
 use Modules\Blog\Models\Author;
 use Modules\Blog\Models\Category;
 use Modules\Blog\Models\Post;
+use Modules\User\Database\Seeders\UserSeeder;
 
 use function Laravel\Prompts\info;
 use function Laravel\Prompts\progress;

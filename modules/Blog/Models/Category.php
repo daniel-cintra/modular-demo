@@ -3,10 +3,10 @@
 namespace Modules\Blog\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
-use Database\Factories\BlogCategoryFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Blog\Database\Factories\BlogCategoryFactory;
 use Modules\Support\Models\BaseModel;
 use Modules\Support\Traits\ActivityLog;
 use Modules\Support\Traits\Searchable;
