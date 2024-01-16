@@ -112,7 +112,7 @@ Access the application (in your browser) at the address given by the `php artisa
 
 ## Tests
 
-The tests provided by this Demo Application can be found in the `tests/Feature` directory. After installing the application, you can run the tests executing the following command from the project root directory in the terminal:
+The tests provided by this Demo Application can be found in the `{moduleName}/Tests` directory. After installing the application, you can run the tests executing the following command from the project root directory in the terminal:
 
 ```sh
 php artisan test
