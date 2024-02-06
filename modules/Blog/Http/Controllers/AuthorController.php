@@ -62,7 +62,7 @@ class AuthorController extends BackendController
         ]);
     }
 
-    public function update(AuthorValidate $request, int $id)
+    public function update(AuthorValidate $request, int $id): RedirectResponse
     {
         $author = Author::findOrFail($id);
 
@@ -82,7 +82,7 @@ class AuthorController extends BackendController
             ->with('success', 'Author updated.');
     }
 
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         Author::findOrFail($id)->delete();
 

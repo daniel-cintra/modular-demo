@@ -62,7 +62,7 @@ class CategoryController extends BackendController
         ]);
     }
 
-    public function update(CategoryValidate $request, int $id)
+    public function update(CategoryValidate $request, int $id): RedirectResponse
     {
         $category = Category::findOrFail($id);
 
@@ -82,7 +82,7 @@ class CategoryController extends BackendController
             ->with('success', 'Category updated.');
     }
 
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         Category::findOrFail($id)->delete();
 

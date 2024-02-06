@@ -58,7 +58,7 @@ class PostController extends BackendController
             ->with('success', 'Post created.');
     }
 
-    public function edit(int $id, CategoryService $categoryService, AuthorService $authorService): Response
+    public function edit(CategoryService $categoryService, AuthorService $authorService, int $id): Response
     {
         return inertia('BlogPost/PostForm', [
             'post' => Post::find($id),
@@ -88,7 +88,7 @@ class PostController extends BackendController
             ->with('success', 'Post updated.');
     }
 
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         Post::findOrFail($id)->delete();
 
