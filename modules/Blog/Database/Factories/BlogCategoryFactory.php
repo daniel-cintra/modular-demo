@@ -3,10 +3,8 @@
 namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Category;
-use Throwable;
 
 class BlogCategoryFactory extends Factory
 {
@@ -19,7 +17,7 @@ class BlogCategoryFactory extends Factory
         return [
             'name' => $name,
             'description' => $this->faker->realText(),
-            'image' => $this->createImage(),
+            'image' => $this->faker->imageUrl(),
             'is_visible' => $this->faker->boolean(),
             'slug' => Str::slug($name),
             'meta_tag_title' => Str::limit($name, 60, ''),
@@ -27,20 +25,5 @@ class BlogCategoryFactory extends Factory
             'created_at' => $this->faker->dateTimeBetween('-1 year', '-6 month'),
             'updated_at' => $this->faker->dateTimeBetween('-5 month', 'now'),
         ];
-    }
-
-    private function createImage(): string
-    {
-        try {
-            $image = file_get_contents('https://source.unsplash.com/random/320x75?nature');
-        } catch (Throwable $exception) {
-            return 'Error fetching image: '.$exception->getMessage();
-        }
-
-        $fileName = Str::uuid().'.jpg';
-
-        Storage::disk('public')->put("blog/$fileName", $image);
-
-        return $fileName;
     }
 }
