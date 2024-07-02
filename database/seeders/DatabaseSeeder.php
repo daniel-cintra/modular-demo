@@ -18,6 +18,9 @@ use function Laravel\Prompts\info;
 
 class DatabaseSeeder extends Seeder
 {
+
+    //These images are available at: resources/images/blog . Just copy them to storage/app/public/blog as mentioned in the README.md
+
     private $blogCategoriesImages = [
         '57b76f29-dd7d-4018-b172-a06e6ef4a4cf.jpg',
         'f0d5596c-d23a-4db7-97a5-9a298b924994.jpg',

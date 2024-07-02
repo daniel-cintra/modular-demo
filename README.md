@@ -74,6 +74,12 @@ Create a symlink to the storage:
 php artisan storage:link
 ```
 
+Copy the blog example images from `resources/images/blog` to `storage/app/public/blog`:
+
+```
+cp -r resources/images/blog storage/app/public/blog
+```
+
 Install NPM dependencies:
 
 ```sh
